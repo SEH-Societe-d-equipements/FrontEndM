@@ -14,7 +14,7 @@ export class OrderDetailsDialogComponent implements OnInit {
     'middleName': '', 
     'company': '',
     'email': 'emilio.verdines@gmail.com',
-    'phone': '(+100) 123 456 7890', 
+    'phone': '(+216) 70 725 240', 
     'country': 'US',
     'city': 'New York',
     'place': 'Brooklyn',
