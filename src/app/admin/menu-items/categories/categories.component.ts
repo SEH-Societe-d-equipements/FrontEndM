@@ -51,18 +51,23 @@ export class CategoriesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(cat => {  
       if(cat){
         let message = '';      
-        const index: number = this.dataSource.data.findIndex(x => x.id == cat.id); 
+        const index: number = this.dataSource.data.findIndex(x => x._id == cat.id); 
         if(index !== -1){
           this.dataSource.data[index] = cat;
           message = 'Category '+cat.name+' updated successfully';
         } 
-        else{ 
+        else { 
           let last_category = this.dataSource.data[this.dataSource.data.length - 1]; 
-          cat.id = last_category.id + 1; 
+        
+          // Convertir last_category._id en nombre si c'est une chaîne
+          const lastCategoryId = typeof last_category._id === 'string' ? +last_category._id : last_category._id;
+        
+          cat.id = lastCategoryId + 1; 
           this.dataSource.data.push(cat); 
           this.paginator.lastPage();
-          message = 'New category '+cat.name+' added successfully!'; 
-        }  
+          message = 'New category ' + cat.name + ' added successfully!'; 
+        }
+        
         this.initDataSource(this.dataSource.data); 
         this.snackBar.open(message, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });          
       }

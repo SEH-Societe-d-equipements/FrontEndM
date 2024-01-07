@@ -5,13 +5,13 @@
                 [title]="'Welcome to Restaurant'"
                 [desc]="'Booking a table online is easy'"
                 [isHomePage]="true"
-                [fullscreen]="false">
+                [fullscreen]="true">
 </app-header-image> 
 
 <app-header-carousel *ngIf="settings.header == 'carousel'" 
                     [slides]="slides" 
                     [contentOffsetToTop]="false"
-                    [fullscreen]="false">
+                    [fullscreen]="true">
 </app-header-carousel>
 
 <app-header-video *ngIf="settings.header == 'video'" 
@@ -20,7 +20,7 @@
                 [title]="'Welcome to Restaurant'"
                 [desc]="'Booking a table online is easy'"
                 [isHomePage]="true"
-                [fullscreen]="false">
+                [fullscreen]="true">
 </app-header-video>
   
 

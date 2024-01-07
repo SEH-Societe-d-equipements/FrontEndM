@@ -18,7 +18,7 @@ export class ChefsComponent implements OnInit {
   }
 
   public getMenuItems(){
-    this.appService.getMenuItems().subscribe(data=>{
+    this.appService.getMenuItemsA().subscribe(data=>{
       this.menuItems = this.appService.shuffleArray(data).slice(0, 8); 
     });
   } 

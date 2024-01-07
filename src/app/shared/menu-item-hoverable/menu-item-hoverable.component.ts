@@ -16,26 +16,7 @@ export class MenuItemHoverableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public addToCart(){ 
-    this.appService.addToCart(this.menuItem, CartOverviewComponent); 
-  }
 
-  public onCart(){
-    if(this.appService.Data.cartList.find(item=>item.id == this.menuItem.id)){
-      return true;
-    }
-    return false;
-  }
-
-  public addToFavorites(){
-    this.appService.addToFavorites(this.menuItem);
-  }
-
-  public onFavorites(){
-    if(this.appService.Data.favorites.find(item=>item.id == this.menuItem.id)){
-      return true;
-    }
-    return false;
-  }
+  
 
 }

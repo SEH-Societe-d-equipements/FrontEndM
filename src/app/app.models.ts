@@ -78,20 +78,20 @@ export class OrderStatus {
 }
 
 export class MenuItem {
-    constructor(public id: number,
-                public name: string,
-                public description: string,
-                public price: number,
-                public image: MenuItemImage,
-                public discount: number,
-                public ratingsCount: number,
-                public ratingsValue: number,
-                public availibilityCount: number,
-                public cartCount: number,
-                public weight: number,
-                public isVegetarian: boolean,
-                public categoryId: number){}
-}
+    constructor(
+      public _id: number,
+      public Reference: string,
+      public Designation: string,
+      public Photo?: string,
+      public Categorie?: {
+        _id: string;
+        Libelle : string,
+        description: string
+      },
+    
+    ) {}
+  }
+  
 
 export class MenuItemImage {
     constructor(public small: string,
@@ -100,10 +100,14 @@ export class MenuItemImage {
 }
 
 export class Category {
-    constructor(public id: number,
-                public name: string,
-                public description: string){ }
-}   
+    constructor(
+      public _id?: string ,
+      public Libelle?: string,
+      public description?: string
+    ) {}
+  }
+  
+    
 
 export class Pagination {
     constructor(public page: number,

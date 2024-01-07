@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   public getTodayMenu(){
-    this.appService.getMenuItemById(23).subscribe(data=>{ 
+    this.appService.getMenuItemById('6598b0afc5dc17885d7d9bab').subscribe(data=>{ 
       this.todayMenu = data;  
     });
   }  

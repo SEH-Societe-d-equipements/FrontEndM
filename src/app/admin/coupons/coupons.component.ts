@@ -48,9 +48,9 @@ export class CouponsComponent implements OnInit {
   }
 
   public getCategories(){
-    if(!this.appService.Data.categories.length){
+    if(!this.appService.categories.length){
       this.appService.getCategories().subscribe(categories=>{ 
-        this.appService.Data.categories = categories;
+        this.appService.categories = categories;
       });
     } 
   } 
@@ -74,7 +74,7 @@ export class CouponsComponent implements OnInit {
       coupon: coupon,
       stores: this.stores,
       discountTypes: this.discountTypes,
-      categories: this.appService.Data.categories
+      categories: this.appService.categories
     };
     const dialogRef = this.appService.openDialog(CouponDialogComponent, data, 'theme-dialog');
     dialogRef.afterClosed().subscribe(coup => {  

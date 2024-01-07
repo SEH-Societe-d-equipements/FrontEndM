@@ -16,12 +16,7 @@
         </a> 
         <a mat-menu-item routerLink="/account/favorites"> 
             <mat-icon class="mat-icon-sm">favorite_border</mat-icon>
-            <span [matBadge]="appService.Data.favorites.length" 
-                  [matBadgeHidden]="appService.Data.favorites.length == 0"
-                  matBadgeSize="small" 
-                  matBadgeColor="warn" 
-                  matBadgeOverlap="false"
-                  aria-hidden="false">Favorites</span> 
+            
         </a> 
         <a mat-menu-item routerLink="/account/profile"> 
             <mat-icon class="mat-icon-sm">edit</mat-icon>

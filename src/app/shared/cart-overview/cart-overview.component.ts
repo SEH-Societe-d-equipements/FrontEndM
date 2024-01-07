@@ -21,42 +21,15 @@ export class CartOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.menuItems = this.appService.Data.cartList;
   }
 
   public hideSheet(isRedirect:boolean){
     this.bottomSheetRef.dismiss(isRedirect);
   }
 
-  public clearCart(){
-    this.appService.Data.cartList.length = 0;
-    this.appService.Data.totalPrice = 0; 
-    this.hideSheet(false)
-  }
-
-  public remove(item:MenuItem, event:any) {
-    const index: number = this.appService.Data.cartList.indexOf(item);
-    if (index !== -1) {
-      item.cartCount = 0;
-      this.appService.Data.cartList.splice(index, 1);  
-      this.appService.calculateCartTotal(); 
-    } 
-    if(this.appService.Data.cartList.length == 0){
-      this.hideSheet(false);
-    }
-    event.preventDefault();           
-  }  
-
-  public counterChange(menuItem:MenuItem, count:number){   
-    menuItem.cartCount = count;
-    if(menuItem.cartCount <= menuItem.availibilityCount){ 
-      this.appService.calculateCartTotal();
-    }
-    else{
-      menuItem.cartCount = menuItem.availibilityCount;
-      this.snackBar.open('You can not add more items than available. In stock ' + menuItem.availibilityCount + ' items and you already added ' + menuItem.cartCount + ' item to your cart', '×', { panelClass: 'error', verticalPosition: 'top', duration: 5000 });
-    } 
-  }
+ 
+  
+ 
  
 
 }
