@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public specialMenuItems:Array<MenuItem> = [];
   public bestMenuItems:Array<MenuItem> = [];
   public todayMenu!:MenuItem;
+  public menuItems: MenuItem[] = [];
 
   public settings: Settings;
   constructor(public appSettings:AppSettings, public appService:AppService ) {
@@ -33,8 +34,9 @@ export class HomeComponent implements OnInit {
   }
  
   public getSpecialMenuItems(){
-    this.appService.getSpecialMenuItems().subscribe(menuItems=>{
+    this.appService.getSpecialArticles().subscribe(menuItems=>{
       this.specialMenuItems = menuItems;
+      console.log(this.specialMenuItems)
     });
   } 
 

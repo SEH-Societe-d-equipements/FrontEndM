@@ -317,7 +317,6 @@ export class ContactComponent implements OnInit {
                     this.snackBar.open(error.error, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 }); 
                 }  
             }); 
-
         }
     }
 

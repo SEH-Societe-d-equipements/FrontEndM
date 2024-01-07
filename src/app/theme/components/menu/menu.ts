@@ -21,11 +21,11 @@ export const horizontalMenuItems = [
     new Menu (70, 'NAV.CONTACT', '/contact', null, null, false, 0),  
     /*new Menu (80, 'NAV.ABOUT_US', '/about', null, null, false, 0),  */
     /*new Menu (90, 'NAV.ADMIN', '/admin', null, null, false, 0),  
-    new Menu (140, 'NAV.OTHERS', null, null, null, true, 10),
-    new Menu (141, 'NAV.EXTERNAL_LINK', null, 'http://themeseason.com', '_blank', false, 140), */
+    new Menu (140, 'NAV.OTHERS', null, null, null, true, 10),*/
+    new Menu (141, 'NAV.EXTERNAL_LINK', null, 'http://themeseason.com', '_blank', false, 140), 
     new Menu (142, 'NAV.MENU_ITEM', null, '/', '_blank', false, 140),
     new Menu (143, 'NAV.MENU_ITEM', null,'/', '_blank', false, 140),
-    new Menu (144, 'NAV.MENU_ITEM', null,'/', '_blank', false, 140)  
+    new Menu (144, 'NAV.MENU_ITEM', null,'/', '_blank', false, 140)    
 ]
 
 export const verticalMenuItems = [ 

@@ -4,7 +4,7 @@
                 [contentOffsetToTop]="true"
                 [title]="'Bienvenue a SEH'"
                 [desc]="'Equipements Hôteliers et Restaurations '"
-                [isHomePage]="false"
+                [isHomePage]="true"
                 [fullscreen]="true">
 </app-header-image> 
 
@@ -15,11 +15,11 @@
 </app-header-carousel>
 
 <app-header-video *ngIf="settings.header == 'video'" 
-                [backgroundVideo]="'assets/images/others/test.mp4'" 
+                [backgroundVideo]="'http://themeseason.com/data/videos/restaurant.mp4'" 
                 [contentOffsetToTop]="true"
                 [title]="'Bienvenue a SEH'"
                 [desc]="'Equipements Hôteliers et Restaurations '"
-                [isHomePage]="false"
+                [isHomePage]="true"
                 [fullscreen]="true">
 </app-header-video>
   
@@ -50,28 +50,22 @@
 
 <div class="section default mt-3">
     <div class="px-3">
-        <div class="theme-container">
+        <div class="theme-container" *ngIf="specialMenuItems">
             <h1 class="section-title">équipements Hôteliers et Restaurations</h1>
             <p class="section-desc text-muted">Découvrez nos produits.</p> 
             <app-menu-items-carousel [menuItems]="specialMenuItems"></app-menu-items-carousel>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <a mat-raised-button routerLink="/menu" color="primary" class="uppercase">View all menu</a>
             </div>  
-        </div>
+        </div>        
     </div>   
 </div> 
-
-
-<!-- This is a comment in HTML -->
-<!-- <app-our-services></app-our-services> 
-//<app-our-chefs></app-our-chefs>  
-//<app-timeline></app-timeline> --> 
 
 <div class="section">
     <div class="px-3">
         <div class="theme-container">
-            <h1 class="section-title mb-3">Reservation</h1>
-            <p class="section-desc text-muted">We provide free, secure and instantly confirmed Rendez-vous.</p>
+            <h1 class="section-title mb-3">Rendez-vous</h1>
+            <p class="section-desc text-muted">Remplir pour prendre un rendez-vous</p>
             <mat-card class="p-0" ngClass.lt-md="px-2 pb-2">
                 <app-reservation-form></app-reservation-form>  
             </mat-card> 
