@@ -1,11 +1,21 @@
-<app-header-image [backgroundImage]="'assets/images/others/menu.jpg'" 
-                  [bgImageAnimate]="true" 
-                  [contentOffsetToTop]="false" 
-                  [fullscreen]="true"
-                  [title]="'Menu'"
-                  [desc]="'“If more of us valued food and cheer and song above hoarded gold, it would be a merrier world.” – J.R.R. Tolkien'">
+
+<app-header-image *ngIf="settings.header == 'image'" 
+                [backgroundImage]="'assets/images/others/menu.jpg'"
+                [bgImageAnimate]="true"
+                [contentOffsetToTop]="true"
+                [title]="'Bienvenue a SEH'"
+                [desc]="'Equipements Hôteliers et Restaurations '"
+                [fullscreen]="true">
 </app-header-image> 
 
+<app-header-video *ngIf="settings.header == 'video'" 
+[backgroundVideo]="'assets/images/others/test.mp4'" 
+[contentOffsetToTop]="true"
+                [title]="'Bienvenue a SEH'"
+                [desc]="'Equipements Hôteliers et Restaurations '"
+                [fullscreen]="true">
+</app-header-video>
+  
 <div class="px-3">  
     <div class="theme-container"> 
         <mat-sidenav-container class="all-menu-items mt-3">
