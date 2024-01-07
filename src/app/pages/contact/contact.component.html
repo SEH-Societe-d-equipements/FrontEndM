@@ -2,7 +2,7 @@
                   [bgImageAnimate]="false" 
                   [contentOffsetToTop]="true"                
                   [title]="'Contact Us'"
-                  [desc]="'Got a question? We\'ll give you straight answer'">
+                  [desc]="'UNE QUESTION ? ON VOUS DONNERA UNE RÉPONSE DIRECTE.'">
 </app-header-image>  
 
 <div class="px-3"> 
@@ -13,24 +13,24 @@
                     <div fxFlex="100" fxFlex.gt-xs="33.3">
                         <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
                             <mat-icon color="primary" class="mat-icon-lg">home</mat-icon>
-                            <h3 class="primary-color py-1">ADDRESS :</h3>
-                            <span>2903 Avenue Z, Brooklyn, New York City</span>
+                            <h3 class="primary-color py-1">ADDRESSE :</h3>
+                            <span>Ain Zaghouan, La Marsa, Tunisia</span>
                         </div>
                     </div>
                     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
                         <div fxLayout="column" fxLayoutAlign="center center">
                             <mat-icon color="primary" class="mat-icon-lg">call</mat-icon>
-                            <h3 class="primary-color py-1">PHONES :</h3>
-                            <span>(212) 457-2308</span>
-                            <span>(212) 457-2309</span>
+                            <h3 class="primary-color py-1">TELEPHONE :</h3>
+                            <span>(216) 70 725 240</span>
+                        
                         </div>
                     </div>
                     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
                         <div fxLayout="column" fxLayoutAlign="center center">
                             <mat-icon color="primary" class="mat-icon-lg">mail_outline</mat-icon>
                             <h3 class="primary-color py-1">E-MAIL :</h3>
-                            <span>contact&#64;mox.com</span>
-                            <span>info&#64;mox.com</span>
+                            <span>contact&#64;seh.com.tn</span>
+                           
                         </div>
                     </div>   
                 </div>  
@@ -74,7 +74,7 @@
                         </form>  
                     </div> 
                     <div fxFlex="100" fxFlex.gt-sm="50" class="py-3"> 
-                        <img src="assets/images/others/about-1.jpg" alt="about-2" class="mw-100 mb-4">
+                        <img src="assets/images/others/Contactus.svg" alt="about-2" class="mw-100 mb-4">
                         <app-social-icons [iconSize]="'lg'" [iconColor]="'primary'" fxLayout="row" fxLayoutAlign="end center"></app-social-icons> 
                     </div> 
                 </div> 
@@ -83,12 +83,4 @@
     </div> 
 </div>
  
-<div class="contact-map">
-    <google-map [center]="center" [zoom]="zoom" [options]="mapOptions" height="400px" width="100%">
-        <map-marker *ngFor="let markerPosition of markerPositions"
-                    [position]="markerPosition"
-                    [options]="markerOptions"></map-marker>
-    </google-map>
-</div>  
 
-<app-get-app></app-get-app> 
