@@ -30,8 +30,11 @@
                     <p fxLayout="row" fxLayoutAlign="start center" class="mb-1">
                         <mat-icon color="primary" class="mat-icon-sm">local_offer</mat-icon>
                         <span class="px-1">Category:</span> 
-                        <span class="fw-500">{{ ( appService.Data.categories | filterById : menuItem.categoryId )?.name }}</span>
-                    </p>
+                        <span class="fw-500">
+                            {{ menuItem.Categorie?.Libelle }}
+                            {{ (appService.categories | filterById: menuItem.Categorie?.Libelle) }}
+                          </span>
+                                              </p>
                     <p fxLayout="row" fxLayoutAlign="start center" class="mb-1">
                         <mat-icon color="primary" class="mat-icon-sm">{{ (menuItem.availibilityCount > 0) ? 'check_circle' : 'unpublished'}}</mat-icon>
                         <span class="px-1">Availibility:</span> 

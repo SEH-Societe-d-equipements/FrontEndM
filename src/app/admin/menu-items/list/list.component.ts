@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    this.appService.getMenuItems().subscribe((menuItems:MenuItem[]) => {
+    this.appService.getMenuItemsA().subscribe((menuItems:MenuItem[]) => {
       this.initDataSource(menuItems); 
     })
   }
@@ -32,9 +32,9 @@ export class ListComponent implements OnInit {
   }  
 
   public getCategories(){
-    if(!this.appService.Data.categories.length){
+    if(!this.appService.categories.length){
       this.appService.getCategories().subscribe(categories=>{ 
-        this.appService.Data.categories = categories;
+        this.appService.categories = categories;
       });
     } 
   } 

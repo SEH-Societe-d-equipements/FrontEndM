@@ -86,18 +86,6 @@ export class CheckoutComponent implements OnInit {
     this.step--;
   }
 
-  public placeOrder(){ 
-    this.checkoutForm.updateValueAndValidity();
-    this.checkoutForm.markAllAsTouched();
-    if(this.checkoutForm.valid){
-      this.step = 4;
-      this.orderCompleted = true; 
-      this.orderEmail = (this.checkoutForm.get('deliveryAddress') as any)['controls'].email.value; 
-      this.checkoutForm.reset();
-      this.appService.Data.cartList.length = 0;    
-      this.appService.Data.totalPrice = 0;
-      this.appService.Data.totalCartCount = 0;
-    }   
-  }
-
+  
+  
 }

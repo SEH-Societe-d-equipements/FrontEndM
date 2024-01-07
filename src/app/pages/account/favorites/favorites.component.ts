@@ -19,7 +19,6 @@ export class FavoritesComponent implements OnInit {
   constructor(public appService:AppService) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.appService.Data.favorites);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

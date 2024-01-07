@@ -16,9 +16,7 @@ export class Toolbar1Component implements OnInit {
   public sidenavToggle(){
     this.onMenuIconClick.emit();
   }
-  public openCart(){ 
-    this.appService.openCart(CartOverviewComponent)
-  }
+ 
   public reservation(){ 
     this.appService.makeReservation(ReservationDialogComponent, null, true);   
   }

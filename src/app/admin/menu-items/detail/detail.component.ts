@@ -30,15 +30,15 @@ export class DetailComponent implements OnInit {
   } 
 
   public getCategories(){
-    if(!this.appService.Data.categories.length){
+    if(!this.appService.categories.length){
       this.appService.getCategories().subscribe(categories=>{ 
-        this.appService.Data.categories = categories;
+        this.appService.categories = categories;
       });
     } 
   } 
 
   public getMenuItemById(id:number){ 
-    this.appService.getMenuItemById(id).subscribe(data=>{ 
+    this.appService.getMenuItemById('6598b0afc5dc17885d7d9bab').subscribe(data=>{ 
       this.menuItem = data;  
     }); 
   }

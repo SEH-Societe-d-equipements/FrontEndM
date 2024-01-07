@@ -23,7 +23,7 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Category</mat-label>
                                 <mat-select formControlName="categoryId" required>
-                                    <mat-option *ngFor="let cat of appService.Data.categories" [value]="cat.id">
+                                    <mat-option *ngFor="let cat of appService.categories" [value]="cat.id">
                                         <span>{{cat.name}}</span>
                                     </mat-option>
                                 </mat-select>

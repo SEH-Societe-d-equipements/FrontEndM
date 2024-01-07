@@ -51,9 +51,9 @@ export class AddComponent implements OnInit {
   } 
 
   public getCategories(){
-    if(!this.appService.Data.categories.length){
+    if(!this.appService.categories.length){
       this.appService.getCategories().subscribe(categories=>{ 
-        this.appService.Data.categories = categories;
+        this.appService.categories = categories;
       });
     } 
   } 
@@ -62,7 +62,7 @@ export class AddComponent implements OnInit {
     this.appService.getMenuItemById(this.id).subscribe((menuItem:MenuItem)=>{ 
       this.form.patchValue(menuItem); 
       if (isPlatformBrowser(this.platformId)) {
-        this.appService.convertImgToBase64(menuItem.image.medium, (dataUrl:string) => { 
+        this.appService.convertImgToBase64(menuItem.Photo, (dataUrl:string) => { 
           this.showImage = true;
           this.form.controls.image.patchValue(dataUrl.toString());
         }) 

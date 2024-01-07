@@ -2,6 +2,7 @@ import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { MenuItem } from 'src/app/app.models';
 import { AppService } from 'src/app/app.service';
 import { CartOverviewComponent } from '../cart-overview/cart-overview.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-menu-item',
@@ -25,6 +26,9 @@ export class MenuItemComponent implements OnInit {
     }   
   }
 
+  getFullImageUrl(imageSrc: string): string {
+    return environment.backendUrl +""+ imageSrc;
+  }
   public getColumnCount(value:number){
     if(value == 25){
       this.column = 4;
@@ -40,26 +44,9 @@ export class MenuItemComponent implements OnInit {
     }
   }
 
-  public addToCart(){ 
-    this.appService.addToCart(this.menuItem, CartOverviewComponent); 
-  }
+  
 
-  public onCart(){
-    if(this.appService.Data.cartList.find(item=>item.id == this.menuItem.id)){
-      return true;
-    }
-    return false;
-  }
 
-  public addToFavorites(){
-    this.appService.addToFavorites(this.menuItem);
-  }
 
-  public onFavorites(){
-    if(this.appService.Data.favorites.find(item=>item.id == this.menuItem.id)){
-      return true;
-    }
-    return false;
-  }
 
 }

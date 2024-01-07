@@ -4,7 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filterById'
 })
 export class FilterByIdPipe implements PipeTransform {
-  transform(items:Array<any>, id?:number) {
-    return items.find(item => item.id == id);
+ 
+  transform(items: any[], id?: string): any {
+    return items.find(item => item.id === id);
   }
+
 }

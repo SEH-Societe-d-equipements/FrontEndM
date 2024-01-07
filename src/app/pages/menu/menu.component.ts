@@ -3,28 +3,32 @@ import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { filter, map } from 'rxjs/operators';
-import { MenuItem, Pagination } from 'src/app/app.models';
+import { Category, MenuItem, Pagination } from 'src/app/app.models';
 import { AppService } from 'src/app/app.service';
 import { AppSettings, Settings } from 'src/app/app.settings';
 import { DomHandlerService } from 'src/app/dom-handler.service';
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
+
+
 export class MenuComponent implements OnInit {
   @ViewChild('sidenav') sidenav: any;
   public sidenavOpen:boolean = false;
   public showSidenavToggle:boolean = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public menuItems: MenuItem[] = [];
-  public categories:any[] = [];
+  public categories:Array<Category> = [];
   public viewType: string = 'grid';
   public viewCol: number = 25;
   public count: number = 12;
   public sort: string = '';
-  public selectedCategoryId:number = 0;
+  public selectedCategoryId: any ; // Change the type to string
+
   public pagination:Pagination = new Pagination(1, this.count, null, 2, 0, 0); 
   public message:string | null = '';
   public watcher: Subscription;
@@ -65,46 +69,67 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    this.getMenuItems();
+    this.getMenuItemsA();
   }
 
   ngOnDestroy(){ 
     this.watcher.unsubscribe();
   }
 
-  public getCategories(){
-    this.appService.getCategories().subscribe(categories=>{
-      this.categories = categories;
-      this.appService.Data.categories = categories;
-    })
-  } 
-  public selectCategory(id:number){
-    this.selectedCategoryId = id;
-    this.menuItems.length = 0;
-    this.resetPagination();
-    this.getMenuItems();
-    this.sidenav.close();
+  public getCategories() {
+    this.appService.getCategories().subscribe(categories => {
+      this.categories = categories.map(category => ({
+        ...category,
+        _id: category._id.toString()  // Convertir l'ID en chaîne si c'est un nombre
+      }));
+      console.log(this.categories);
+    });
   }
+  
+  public selectCategory(_id: string): void {
+    console.log("Selected category ID:", _id);
+  
+    if (_id !== undefined && _id !== null) {
+      this.selectedCategoryId = _id.toString();
+      console.log("Converted category ID to string:", this.selectedCategoryId);
+  
+      if (this.selectedCategoryId === '0') {
+        // Charger tous les articles lorsque "All Categories" est sélectionné
+        this.getMenuItemsA();
+      } else {
+        // Charger les articles en fonction de la catégorie sélectionnée
+        this.getArticlesByCategory(this.selectedCategoryId);
+      }
+      this.sidenav.close();
+    } else {
+      console.error("Invalid category ID. Value received:", _id);
+    }
+  }
+  
+  
+  
+  
+  
+
   public onChangeCategory(event:any){ 
     this.selectCategory(event.value);
   }
+  public getArticlesByCategory(categoryId: string): void {
+    this.appService.getMenuItems(categoryId).subscribe(data => {
+      this.menuItems = data;
+      this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
+      this.message = null;
+    });
+  }
+  
 
-  public getMenuItems(){
-    this.appService.getMenuItems().subscribe(data => {
-      // this.menuItems = this.appService.shuffleArray(data);
-      // this.menuItems = data;
-      let result = this.filterData(data); 
-      if(result.data.length == 0){
-        this.menuItems.length = 0;
-        this.pagination = new Pagination(1, this.count, null, 2, 0, 0);  
-        this.message = 'No Results Found'; 
-      } 
-      else{
-        this.menuItems = result.data; 
-        this.pagination = result.pagination;
-        this.message = null;
-      } 
-    })
+  public getMenuItemsA(){
+    this.appService.getMenuItemsA().subscribe(data => {
+      this.menuItems = data;
+      console.log(data)
+      this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
+      this.message = null;
+    });
   }  
 
   public resetPagination(){ 
@@ -117,20 +142,17 @@ export class MenuComponent implements OnInit {
   public filterData(data:any){
     return this.appService.filterData(data, this.selectedCategoryId, this.sort, this.pagination.page, this.pagination.perPage);
   }
-  // public filterData(data){
-  //   return this.appService.filterData(data, this.searchFields, this.sort, this.pagination.page, this.pagination.perPage);
-  // }
-
+ 
   public changeCount(count:number){
     this.count = count;   
     this.menuItems.length = 0;
     this.resetPagination();
-    this.getMenuItems();
+    this.getMenuItemsA();
   }
   public changeSorting(sort:any){    
     this.sort = sort; 
     this.menuItems.length = 0;
-    this.getMenuItems();
+    this.getMenuItemsA();
   }
   public changeViewType(obj:any){ 
     this.viewType = obj.viewType;
@@ -140,7 +162,7 @@ export class MenuComponent implements OnInit {
 
   public onPageChange(e:any){ 
     this.pagination.page = e.pageIndex + 1;
-    this.getMenuItems();
+    this.getMenuItemsA();
     this.domHandlerService.winScroll(0,0);  
   }
 

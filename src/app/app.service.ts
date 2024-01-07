@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { MenuItem, Order, Category } from 'src/app/app.models'; 
+import { MenuItem, Order } from 'src/app/app.models'; 
 import { AppSettings } from 'src/app/app.settings'; 
 import { environment } from 'src/environments/environment';   
 import { ConfirmDialogComponent, ConfirmDialogModel } from './shared/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './shared/alert-dialog/alert-dialog.component';
 import { map } from 'rxjs/operators';
 import { DomHandlerService } from './dom-handler.service';
+
 
 export class Data {
   constructor(public categories: Category[], 
@@ -24,20 +25,25 @@ export class Data {
               ) { }
 }
 
+interface Category {
+  _id: string;
+  description: string;
+  Libelle: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  public Data = new Data(
-    [],  // categories 
-    [],  // cartList
-    [],  // orderList
-    [],  // favorites 
-    0, // totalPrice
-    0 //totalCartCount
-  )  
+
+
+
   
   public url = environment.url + '/assets/data/'; 
+  public url2 = environment.backendUrl ;
   
   constructor(public http:HttpClient, 
               private datePipe:DatePipe,
@@ -46,14 +52,26 @@ export class AppService {
               public dialog: MatDialog,
               public appSettings:AppSettings,
               public translateService: TranslateService,
-              private domHandlerService: DomHandlerService) { }  
+              private domHandlerService: DomHandlerService) { } 
+               
+              public categories: Category[] = [];
+              public articles: MenuItem[] = [];
 
-  public getMenuItems(): Observable<MenuItem[]>{
-    return this.http.get<MenuItem[]>(this.url + 'menu-items.json');
-  } 
+
+              public getMenuItems(categoryId: string): Observable<MenuItem[]> {
+                const params = new HttpParams().set('categoryId', categoryId);
+                return this.http.get<{ articles: MenuItem[] }>(`${this.url2}api/article/articles`, { params })
+                  .pipe(map(response => response.articles));
+              }
+               
+              public getMenuItemsA(): Observable<MenuItem[]>{
+                return this.http.get<{articles: MenuItem[]}>(`${this.url2}api/article/articles`)
+                .pipe(map(response => response.articles));
+              }
  
-  public getMenuItemById(id:number): Observable<MenuItem>{
-    return this.http.get<MenuItem>(this.url + 'menu-item-' + id + '.json');
+  public getMenuItemById(id:string): Observable<MenuItem>{
+    return this.http.get<{articles: MenuItem}>(`${this.url2}api/article/articles/${id}` )
+    .pipe(map(response => response.articles));
   }
  
   public getSpecialMenuItems(): Observable<MenuItem[]>{
@@ -64,9 +82,12 @@ export class AppService {
     return this.http.get<MenuItem[]>(this.url + 'best-menu-items.json');
   } 
 
-  public getCategories(): Observable<Category[]>{
-    return this.http.get<Category[]>(this.url + 'categories.json');
-  }  
+  public getCategories(): Observable<Category[]> {
+    return this.http.get<{categories: Category[] }>(`${this.url2}api/category/categories`)
+      .pipe(map(response => response.categories));
+  }
+  
+ 
 
   public getHomeCarouselSlides(){
     return this.http.get<any[]>(this.url + 'slides.json');
@@ -88,69 +109,10 @@ export class AppService {
     return guid;
   }
 
-  public addToCart(menuItem:MenuItem, component:any){   
-    if(!this.Data.cartList.find(item=>item.id == menuItem.id)){
-      menuItem.cartCount = (menuItem.cartCount) ? menuItem.cartCount : 1;
-      this.Data.cartList.push(menuItem); 
-      this.calculateCartTotal(); 
-      if(component){
-        this.openCart(component);        
-      }
-      else{ 
-        this.snackBar.open('The menu item "' + menuItem.name + '" has been added to cart.', '×', {
-          verticalPosition: 'top',
-          duration: 3000,
-          direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
-          panelClass: ['success'] 
-        });
-      }
-    }  
-  } 
+  
 
-  public openCart(component:any){  
-    this.bottomSheet.open(component, {
-      direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr'
-    }).afterDismissed().subscribe(isRedirect=>{  
-      if(isRedirect){ 
-        this.domHandlerService.winScroll(0,0);  
-      }        
-    });  
-  }
-
-  public calculateCartTotal(){
-    this.Data.totalPrice = 0;
-    this.Data.totalCartCount = 0;
-    this.Data.cartList.forEach(item=>{
-      let price = 0;
-      if(item.discount){
-        price = item.price - (item.price * (item.discount / 100));
-      }
-      else{
-        price = item.price;
-      }
-      this.Data.totalPrice = this.Data.totalPrice + (price * item.cartCount); 
-      this.Data.totalCartCount = this.Data.totalCartCount + item.cartCount;  
-    });
-  }
-
-  public addToFavorites(menuItem:MenuItem){
-    let message:string, status:string;
-    if(this.Data.favorites.find(item=>item.id == menuItem.id)){ 
-      message = 'The menu item "' + menuItem.name + '" already added to favorites.'; 
-      status = 'error';    
-    } 
-    else{
-      this.Data.favorites.push(menuItem);
-      message = 'The menu item "' + menuItem.name + '" has been added to favorites.'; 
-      status = 'success';  
-    } 
-    this.snackBar.open(message, '×', {
-      verticalPosition: 'top',
-      duration: 3000,
-      direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
-      panelClass: [status] 
-    });   
-  }
+ 
+  
 
   public openDialog(component:any, data:any, panelClass:any){ 
     return this.dialog.open(component, {
@@ -206,13 +168,7 @@ export class AppService {
   public filterData(data:any, categoryId:number, sort?:string, page?:number, perPage?:number){  
     if(categoryId){
       data = data.filter((item:any) => item.categoryId == categoryId);
-    }   
-
-    //for show more properties mock data 
-    // for (var index = 0; index < 2; index++) {
-    //   data = data.concat(data);        
-    // }     
-     
+    } 
     this.sortData(sort, data);
     return this.paginator(data, page, perPage)
   }
@@ -260,25 +216,39 @@ export class AppService {
     return data;
   }
 
-  public paginator(items:any, page?:any, perPage?:any) { 
-    var page = page || 1,
-    perPage = perPage || 4,
-    offset = (page - 1) * perPage,   
-    paginatedItems = items.slice(offset).slice(0, perPage),
-    totalPages = Math.ceil(items.length / perPage);
+  public paginator(items: any[], page = 1, perPage = 4) {
+    if (!Array.isArray(items)) {
+      console.error('Paginator error: items is not an array.');
+      return {
+        data: [],
+        pagination: {
+          page: 1,
+          perPage: 0,
+          prePage: null,
+          nextPage: null,
+          total: 0,
+          totalPages: 0,
+        },
+      };
+    }
+  
+    const offset = (page - 1) * perPage;
+    const paginatedItems = items.slice(offset, offset + perPage);
+    const totalPages = Math.ceil(items.length / perPage);
+  
     return {
       data: paginatedItems,
-      pagination:{
+      pagination: {
         page: page,
         perPage: perPage,
-        prePage: page - 1 ? page - 1 : null,
-        nextPage: (totalPages > page) ? page + 1 : null,
+        prePage: page > 1 ? page - 1 : null,
+        nextPage: totalPages > page ? page + 1 : null,
         total: items.length,
         totalPages: totalPages,
-      }
+      },
     };
-  }  
-
+  }
+  
   public getCountries(){
     return [ 
         {name: 'Afghanistan', code: 'AF'}, 
@@ -658,13 +628,12 @@ export class AppService {
 
   public getAwards(){
     return [  
-        { name: 'award-1', image: 'assets/images/awards/1.png' },
-        { name: 'award-2', image: 'assets/images/awards/2.png' },
-        { name: 'award-3', image: 'assets/images/awards/3.png' },
-        { name: 'award-4', image: 'assets/images/awards/4.png' },
-        { name: 'award-5', image: 'assets/images/awards/5.png' },
-        { name: 'award-6', image: 'assets/images/awards/6.png' },
-        { name: 'award-7', image: 'assets/images/awards/7.png' } 
+        { name: 'award-1', image: 'assets/images/awards/lambert.png' },
+        { name: 'award-2', image: 'assets/images/awards/unox.png' },
+        { name: 'award-3', image: 'assets/images/awards/bravilor.png' },
+        { name: 'award-4', image: 'assets/images/awards/bunzl.png' },
+        { name: 'award-5', image: 'assets/images/awards/hobart.png' },
+        { name: 'award-6', image: 'assets/images/awards/cambo.png' },
     ];
   }
 
