@@ -628,13 +628,12 @@ export class AppService {
 
   public getAwards(){
     return [  
-        { name: 'award-1', image: 'assets/images/awards/1.png' },
-        { name: 'award-2', image: 'assets/images/awards/2.png' },
-        { name: 'award-3', image: 'assets/images/awards/3.png' },
-        { name: 'award-4', image: 'assets/images/awards/4.png' },
-        { name: 'award-5', image: 'assets/images/awards/5.png' },
-        { name: 'award-6', image: 'assets/images/awards/6.png' },
-        { name: 'award-7', image: 'assets/images/awards/7.png' } 
+        { name: 'award-1', image: 'assets/images/awards/lambert.png' },
+        { name: 'award-2', image: 'assets/images/awards/unox.png' },
+        { name: 'award-3', image: 'assets/images/awards/bravilor.png' },
+        { name: 'award-4', image: 'assets/images/awards/bunzl.png' },
+        { name: 'award-5', image: 'assets/images/awards/hobart.png' },
+        { name: 'award-6', image: 'assets/images/awards/cambo.png' },
     ];
   }
 
