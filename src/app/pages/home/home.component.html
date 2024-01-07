@@ -50,23 +50,16 @@
 
 <div class="section default mt-3">
     <div class="px-3">
-        <div class="theme-container">
+        <div class="theme-container" *ngIf="specialMenuItems">
             <h1 class="section-title">équipements Hôteliers et Restaurations</h1>
             <p class="section-desc text-muted">Découvrez nos produits.</p> 
             <app-menu-items-carousel [menuItems]="specialMenuItems"></app-menu-items-carousel>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <a mat-raised-button routerLink="/menu" color="primary" class="uppercase">View all menu</a>
             </div>  
-        </div>
+        </div>        
     </div>   
 </div> 
-
-
-<!-- This is a comment in HTML -->
-<!-- <app-our-services></app-our-services> 
-//<app-our-chefs></app-our-chefs>  
-//<app-timeline></app-timeline> --> 
-
 <div class="section">
     <div class="px-3">
         <div class="theme-container">

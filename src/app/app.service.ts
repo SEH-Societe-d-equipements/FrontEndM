@@ -76,6 +76,10 @@ export class AppService {
  
   public getSpecialMenuItems(): Observable<MenuItem[]>{
     return this.http.get<MenuItem[]>(this.url + 'special-menu-items.json');
+  }
+  public getSpecialArticles(): Observable<MenuItem[]>{
+    return this.http.get<{articles: MenuItem[]}>(`${this.url2}api/article/firstFourArticles`)
+    .pipe(map(response => response.articles));
   } 
 
   public getBestMenuItems(): Observable<MenuItem[]>{

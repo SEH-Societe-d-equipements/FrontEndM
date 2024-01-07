@@ -20,32 +20,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSlides();
     this.getSpecialMenuItems();
-    this.getBestMenuItems();
-    this.getTodayMenu();
   }
 
-  public getSlides(){
-    this.appService.getHomeCarouselSlides().subscribe((res:any)=>{
-      this.slides = res;
-    });
-  }
+ 
  
   public getSpecialMenuItems(){
-    this.appService.getSpecialMenuItems().subscribe(menuItems=>{
+    this.appService.getSpecialArticles().subscribe(menuItems=>{
       this.specialMenuItems = menuItems;
+      console.log(this.specialMenuItems)
     });
   } 
 
-  public getBestMenuItems(){
-    this.appService.getBestMenuItems().subscribe(menuItems=>{
-      this.bestMenuItems = menuItems;
-    });
-  }
 
-  public getTodayMenu(){
-   
-  }  
+  
 
 }
