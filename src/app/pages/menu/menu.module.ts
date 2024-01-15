@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../theme/pipes/pipes.module';
 import { MenuComponent } from './menu.component';
 import { MenuSingleComponent } from './menu-single/menu-single.component';
+import { FormsModule } from '@angular/forms';
 
 export const routes: Routes = [
   { path: '', component: MenuComponent, pathMatch: 'full' },
@@ -20,7 +21,9 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    FormsModule,
     PipesModule
+    
   ]
 })
 export class MenuModule { }

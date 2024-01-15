@@ -31,22 +31,9 @@
     "MENU_ITEMS": "Éléments du Produit", 
     "CATEGORIES": "Catégories",
     "MENU_ITEMS_LIST": "Liste de Produit", 
-    "MENU_ITEM_DETAIL": "Détail de Produit",
     "ADD_MENU_ITEM": "Ajouter un Produit",
-    "SALES": "Ventes",
-    "ORDERS": "Ordres",
-    "TRANSACTIONS": "Transactions",
-    "USERS": "Utilisateurs",
-    "RESERVATIONS": "Réservations",
-    "CUSTOMERS": "Les clients", 
-    "COUPONS": "Coupons",
-    "WITHDRAWAL": "Retrait",
-    "ANALYTICS": "Analytique",
-    "REFUND": "Rembourser",
-    "FOLLOWERS": "Suiveurs",
-    "SUPPORT": "Soutien",
-    "REVIEWS": "Commentaires", 
-    "EXTERNAL_LINK": "Lien Externe" 
+    "ANALYTICS": "Analytique"
+   
   },
   "BTN": {
     "ADD": "Ajouter",

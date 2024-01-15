@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -33,17 +33,29 @@ interface Category {
   updatedAt: string;
   __v: number;
 }
+interface User {
+  _id: string;
+  username: string;
+  password: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
 
 
 
   
+  public loggedInUser: User | null = null;
   public url = environment.url + '/assets/data/'; 
   public url2 = environment.backendUrl ;
+  private userRole: string = 'admin';  // Assignez la valeur par défaut ou obtenez-la après la connexion
+
   
   constructor(public http:HttpClient, 
               private datePipe:DatePipe,
@@ -56,6 +68,7 @@ export class AppService {
                
               public categories: Category[] = [];
               public articles: MenuItem[] = [];
+              public user: User[] = [];
 
 
               public getMenuItems(categoryId: string): Observable<MenuItem[]> {
@@ -73,14 +86,72 @@ export class AppService {
     return this.http.get<{articles: MenuItem}>(`${this.url2}api/article/articles/${id}` )
     .pipe(map(response => response.articles));
   }
+  login(username: string, password: string): Observable<any> {
+    const body = { username, password };
+    return this.http.post<any>(this.url2 + 'api/user/login', body);
+  }
+  setUserRole(role: string): void {
+    this.userRole = role;
+  }
+
+  getUserRole(): string {
+    return this.userRole;
+  }
+  
  
+
+  addArticle(reference: string, designation: string, categorie: string, file: File | null): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('Reference', reference);
+    formData.append('Designation', designation);
+    formData.append('Categorie', categorie);
+    if (file) {
+      formData.append('Photo', file, file.name);
+    }
+  
+    return this.http.post<any>(this.url2 + 'api/article/articles', formData);
+  }
+  updateArticle(articleId: string, updatedData: any): Observable<any> {
+    const url = `${this.url2}api/article/articles/${articleId}`;
+    return this.http.put(url, updatedData);
+  }
+
+  deleteArticle(articleId: string): Observable<any> {
+    const url = `${this.url2}api/article/articles/${articleId}`;
+    return this.http.delete(url);
+  }
+  getAllArticles(categoryId?: string): Observable<any> {
+    const url = `${this.url2}api/article/articles`;
+    const params: any = {};
+    if (categoryId) {
+      params.categoryId = categoryId;
+    }
+
+    return this.http.get(url, { params });
+  }
+ 
+  addCategory(Libelle: string, description: string): Observable<Category> {
+    const body = {  Libelle: Libelle, description: description };
+    return this.http.post<any>(this.url2 + 'api/category/categories', body);
+  }
+  updateCategory(categoryId: string,updatedData: any): Observable<any> {
+    const url = `${this.url2}api/category/categories/${categoryId}`;
+
+    return this.http.put(url, updatedData);
+  }
+  deleteCategory(categoryId: string): Observable<any> {
+    const url = `${this.url2}api/category/categories/${categoryId}`;
+    return this.http.delete(url);
+  }
   public getSpecialMenuItems(): Observable<MenuItem[]>{
     return this.http.get<MenuItem[]>(this.url + 'special-menu-items.json');
   }
+ 
   public getSpecialArticles(): Observable<MenuItem[]>{
     return this.http.get<{articles: MenuItem[]}>(`${this.url2}api/article/firstFourArticles`)
     .pipe(map(response => response.articles));
   } 
+  
 
   public getBestMenuItems(): Observable<MenuItem[]>{
     return this.http.get<MenuItem[]>(this.url + 'best-menu-items.json');

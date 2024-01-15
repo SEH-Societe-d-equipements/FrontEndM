@@ -21,18 +21,29 @@ export class MenuComponent implements OnInit {
   public sidenavOpen:boolean = false;
   public showSidenavToggle:boolean = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  public originmenuItems: MenuItem[] = [];
   public menuItems: MenuItem[] = [];
+
   public categories:Array<Category> = [];
   public viewType: string = 'grid';
   public viewCol: number = 25;
   public count: number = 12;
   public sort: string = '';
   public selectedCategoryId: any ; // Change the type to string
-
+  searchQuery: string = '';
   public pagination:Pagination = new Pagination(1, this.count, null, 2, 0, 0); 
   public message:string | null = '';
   public watcher: Subscription;
   public settings: Settings;
+
+  filteredMenuItems: MenuItem[] = [];
+  
+  typesOffilter: string[] = ['Boots', 'Cuisine', 'Loafers', 'Moccasins', 'Sneakers'];  
+
+  selectedFilter: string = '';
+
+// Existing code...
+
 
   constructor(public appSettings:AppSettings, 
               public appService:AppService,
@@ -65,6 +76,35 @@ export class MenuComponent implements OnInit {
     });
 
 
+  }
+  applyFilter() {
+     // Debugging line
+    console.log('Selected Filter:', this.selectedFilter);
+    if (this.selectedFilter === undefined) {
+      this.getArticlesByCategory(this.selectedCategoryId);
+    } else {
+      const trimmedQuery = this.selectedFilter.trim().toLowerCase();
+      this.menuItems = this.originmenuItems.filter(item =>
+        
+        item.Designation.toLowerCase().includes(trimmedQuery) 
+      );
+    }
+    this.resetPagination();
+  }
+  applySearchFilter(): void {
+    const trimmedQuery = this.searchQuery.trim().toLowerCase();
+    if (trimmedQuery === '') {
+      this.resetPagination();
+
+    } else {
+      this.menuItems = this.originmenuItems.filter(item =>
+        item.Reference.toLowerCase().includes(trimmedQuery) ||
+        item.Categorie.Libelle.toLowerCase().includes(trimmedQuery) ||
+        item.Categorie.description.toLowerCase().includes(trimmedQuery) ||
+        item.Designation.toLowerCase().includes(trimmedQuery) 
+      );
+    }
+    this.resetPagination();
   }
 
   ngOnInit(): void {
@@ -115,8 +155,15 @@ export class MenuComponent implements OnInit {
     this.selectCategory(event.value);
   }
   public getArticlesByCategory(categoryId: string): void {
+    const trimmedQuery = this.selectedFilter.trim().toLowerCase();
+
     this.appService.getMenuItems(categoryId).subscribe(data => {
-      this.menuItems = data;
+      this.originmenuItems = data;
+      this.menuItems = data.filter(item =>
+        
+        item.Designation.toLowerCase().includes(trimmedQuery) 
+      );
+
       this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
       this.message = null;
     });
@@ -125,6 +172,7 @@ export class MenuComponent implements OnInit {
 
   public getMenuItemsA(){
     this.appService.getMenuItemsA().subscribe(data => {
+      this.originmenuItems = data;
       this.menuItems = data;
       console.log(data)
       this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));

@@ -22,6 +22,6 @@
     </a>
 
     <div *ngIf="menu.hasSubMenu" class="sub-menu" [id]="'sub-menu-'+menu.id">
-        <app-admin-menu [menuItems]="menuItems" [menuParentId]="menu.id"></app-admin-menu>
+        <app-admin-menu *ngIf="menu.hasSubMenu" [menuItems]="menuItems" [menuParentId]="menu.id" [userRole]="userRole"></app-admin-menu>
     </div>
 </div>

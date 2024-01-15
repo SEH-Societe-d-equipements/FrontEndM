@@ -12,63 +12,48 @@
         <table mat-table [dataSource]="dataSource" matSort class="w-100">
         
             <!-- ID Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let menuItem"> {{menuItem.id}} </td>
-            </ng-container> 
-            
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Index </th>
+                <td mat-cell *matCellDef="let category; let i = index"> {{ i + 1 }} </td>
+            </ng-container>
             <!-- Image Column -->
             <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
-                <td mat-cell *matCellDef="let menuItem"> <img [src]="menuItem.image.small" alt="item" width="60"> </td>
-            </ng-container> 
+                <td mat-cell *matCellDef="let menuItem">
+                    <img  *ngIf="menuItem.Photo"  [src]="getFullImageUrl(menuItem.Photo)" width="60">
+                </td>
+            </ng-container>
+            
+            
+            
+            
 
             <!-- Category Column -->
             <ng-container matColumnDef="categoryId">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
-                <td mat-cell *matCellDef="let menuItem"> {{( appService.Data.categories | filterById : menuItem.categoryId )?.name}}  </td>
+                <td mat-cell *matCellDef="let menuItem"> {{( appService.categories | filterById : menuItem.categoryId )?.Libelle}}  </td>
             </ng-container> 
 
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                <td mat-cell *matCellDef="let menuItem"> {{menuItem.name}} </td>
+            <ng-container matColumnDef="Reference">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Reference </th>
+                <td mat-cell *matCellDef="let menuItem"> {{menuItem.Reference}} </td>
             </ng-container> 
 
             <!-- Price Column -->
-            <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                <td mat-cell *matCellDef="let menuItem"> <b class="primary-color">{{menuItem.price | currency : 'USD' : 'symbol' : '1.2-2'}}</b> </td>
+            <ng-container matColumnDef="Designation">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+                <td mat-cell *matCellDef="let menuItem"> {{menuItem.Designation}} </td>
             </ng-container> 
 
-            <!-- Discount Column -->
-            <ng-container matColumnDef="discount">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Discount </th>
-                <td mat-cell *matCellDef="let menuItem"> {{menuItem.discount}} </td>
-            </ng-container> 
-
-            <!-- Availibility Count Column -->
-            <ng-container matColumnDef="availibilityCount">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Availibility Count </th>
-                <td mat-cell *matCellDef="let menuItem"> {{menuItem.availibilityCount}} </td>
-            </ng-container> 
-
-            <!-- Is Vegetarian Column -->
-            <ng-container matColumnDef="isVegetarian">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Vegetarian </th>
-                <td mat-cell *matCellDef="let menuItem"> {{(menuItem.isVegetarian) ? 'Yes':'No'}} </td>
-            </ng-container> 
 
             <!-- Actions Column -->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let menuItem"> 
-                    <a mat-icon-button color="primary" [routerLink]="['/admin/menu-items/add', menuItem.id]" matTooltip="Edit">
+                    <a mat-icon-button color="primary" [routerLink]="['/admin/menu-items/add', menuItem._id]" matTooltip="Edit">
                         <mat-icon>edit</mat-icon>
                     </a> 
-                    <a mat-icon-button color="primary" [routerLink]="['/admin/menu-items/detail', menuItem.id]" matTooltip="View">
-                        <mat-icon>visibility</mat-icon>
-                    </a>  
                     <button mat-icon-button color="warn" (click)="remove(menuItem)" matTooltip="Remove">
                         <mat-icon>delete</mat-icon>
                     </button>   

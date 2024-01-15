@@ -1,0 +1,13 @@
+.filter-container {
+    margin-top: 235px;
+    margin-left: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add hover effect */
+.filter-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

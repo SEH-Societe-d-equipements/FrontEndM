@@ -16,8 +16,8 @@ export class CategoryDialogComponent implements OnInit {
 
   ngOnInit(): void { 
     this.form = this.fb.group({
-      id: 0,
-      name: [null, Validators.required],
+      _id:  [null],
+      Libelle: [null, Validators.required],
       description: null 
     }); 
 

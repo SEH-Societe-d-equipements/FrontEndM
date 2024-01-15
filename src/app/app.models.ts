@@ -79,7 +79,7 @@ export class OrderStatus {
 
 export class MenuItem {
     constructor(
-      public _id: number,
+      public _id: string,
       public Reference: string,
       public Designation: string,
       public Photo?: string,
@@ -106,6 +106,15 @@ export class Category {
       public description?: string
     ) {}
   }
+
+  export class Category1 {
+    constructor(
+      public _id?: string ,
+      public Libelle?: string,
+      public description?: string
+    ) {}
+  }
+
   
     
 
