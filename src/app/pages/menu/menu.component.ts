@@ -38,9 +38,9 @@ export class MenuComponent implements OnInit {
 
   filteredMenuItems: MenuItem[] = [];
   
-  typesOffilter: string[] = ['Boots', 'Cuisine', 'Loafers', 'Moccasins', 'Sneakers'];  
+  typesOffilter: string[] = ['Touts Designations','Pack a Pizza', 'Cuisine', 'réfrigérateur', 'gaz', 'Electrique', 'Chaud', 'froid', 'machine'];  
 
-  selectedFilter: string = '';
+  selectedFilter: string = 'Touts Designations';
 
 // Existing code...
 
@@ -80,7 +80,7 @@ export class MenuComponent implements OnInit {
   applyFilter() {
      // Debugging line
     console.log('Selected Filter:', this.selectedFilter);
-    if (this.selectedFilter === undefined) {
+    if (this.selectedFilter === "Touts Designations") {
       this.getArticlesByCategory(this.selectedCategoryId);
     } else {
       const trimmedQuery = this.selectedFilter.trim().toLowerCase();
@@ -159,11 +159,14 @@ export class MenuComponent implements OnInit {
 
     this.appService.getMenuItems(categoryId).subscribe(data => {
       this.originmenuItems = data;
+      if (this.selectedFilter === "Touts Designations") {
+        this.menuItems = data;
+      } else {
       this.menuItems = data.filter(item =>
         
         item.Designation.toLowerCase().includes(trimmedQuery) 
       );
-
+      }
       this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
       this.message = null;
     });
