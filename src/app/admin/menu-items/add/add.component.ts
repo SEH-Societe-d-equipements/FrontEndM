@@ -24,13 +24,14 @@ export class AddComponent implements OnInit {
               @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {  
-    this.form = this.formBuilder.group({ 
-      "id": 0,
-      "Reference": [null, Validators.compose([Validators.required, Validators.minLength(4)])],
-      "Designation": null,  
-      "image": null,
-      "Categorie": [null, Validators.required]
-    }); 
+  this.form = this.formBuilder.group({ 
+  "_id": [null], // Utilisez "_id" au lieu de "id"
+  "Reference": [null, Validators.compose([Validators.required, Validators.minLength(4)])],
+  "Designation": [null],  
+  "image": [null],
+  "Categorie": [null, Validators.required]
+});
+
     this.getCategories();
     this.sub = this.activatedRoute.params.subscribe(params => {  
       if (params && params['_id']){
@@ -92,19 +93,23 @@ public fileChange(event: any): void {
   
 
  
-  public onSubmit(): void {
-    const formValues = this.form.value;
-  
-    // Assurez-vous que formValues.Categorie est défini avant de l'utiliser
-    if (formValues && formValues.Categorie) {
-      const fileInput = this.form.controls.image.value;
-  
+public onSubmit(): void {
+  const formValues = this.form.value;
+
+  // Assurez-vous que formValues.Categorie est défini avant de l'utiliser
+  if (formValues && formValues.Categorie) {
+    const fileInput = this.form.controls.image.value;
+
+    // Si l'ID de l'article est disponible, mettez à jour l'article existant
+    if (this.id) {
+      this.appService.updateArticle(this.id, formValues);
+    } else {
+      // Sinon, ajoutez un nouvel article
       this.appService.addArticle(formValues.Reference, formValues.Designation, formValues.Categorie, fileInput).subscribe(
         (response: any) => {
           // Gérez la réponse du serveur ici
           console.log(response);
           this.router.navigate(['/admin/menu-items/list']);
-
         },
         error => {
           console.error('Erreur lors de l\'ajout côté serveur', error);
@@ -112,9 +117,11 @@ public fileChange(event: any): void {
           // Gérer les erreurs d'ajout côté serveur
         }
       );
-    } else {
-      console.error('La propriété Categorie est undefined dans formValues.');
     }
+  } else {
+    console.error('La propriété Categorie est undefined dans formValues.');
   }
+}
+
 
 } 

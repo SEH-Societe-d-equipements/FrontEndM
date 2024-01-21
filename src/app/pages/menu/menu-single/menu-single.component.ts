@@ -5,6 +5,7 @@ import { AppSettings, Settings } from 'src/app/app.settings';
 import { AppService } from 'src/app/app.service';
 import { MenuItem } from 'src/app/app.models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-menu-single',
@@ -26,13 +27,24 @@ export class MenuSingleComponent implements OnInit {
     this.settings = this.appSettings.settings; 
   }
 
-  ngOnInit() { 
-  
+  ngOnInit() {
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      const menuItemId = params['id'];
+      this.appService.getMenuItemById(menuItemId).subscribe(data => {
+        this.menuItem = data;
+        console.log('menuItem:', this.menuItem);
+      });
+    });
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }  
+
+  
+  getFullImageUrl(imageSrc: string): string {
+    const fullUrl = environment.backendUrl + "" + imageSrc;
+    return fullUrl;
+} 
+
+  
 
   
 

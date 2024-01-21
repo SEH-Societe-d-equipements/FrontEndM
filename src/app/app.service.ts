@@ -42,6 +42,16 @@ interface User {
   updatedAt: string;
   __v: number;
 }
+interface Contact {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message:string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -69,6 +79,7 @@ export class AppService {
               public categories: Category[] = [];
               public articles: MenuItem[] = [];
               public user: User[] = [];
+              public contact : Contact[] = [];
 
 
               public getMenuItems(categoryId: string): Observable<MenuItem[]> {
@@ -82,13 +93,23 @@ export class AppService {
                 .pipe(map(response => response.articles));
               }
  
-  public getMenuItemById(id:string): Observable<MenuItem>{
-    return this.http.get<{articles: MenuItem}>(`${this.url2}api/article/articles/${id}` )
-    .pipe(map(response => response.articles));
+ 
+  public getMenuItemById(id: string): Observable<MenuItem> {
+    return this.http.get<{ article: MenuItem }>(`${this.url2}api/article/articles/${id}`)
+      .pipe(map(response => response.article));
   }
+  
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
     return this.http.post<any>(this.url2 + 'api/user/login', body);
+  }
+  addContact(contactData: any): Observable<any> {
+    return this.http.post<any>(this.url2 + 'api/contact/contacts', contactData);
+  }
+
+  getContacts(): Observable<Contact[]> {
+    return this.http.get<{ contact: Contact[] }>(this.url2 + 'api/contact/contacts')
+      .pipe(map(response => response.contact));
   }
   setUserRole(role: string): void {
     this.userRole = role;
@@ -115,7 +136,10 @@ export class AppService {
     const url = `${this.url2}api/article/articles/${articleId}`;
     return this.http.put(url, updatedData);
   }
-
+  updateCategory(categoryId: string,updatedData: any): Observable<any> {
+    const url = `${this.url2}api/category/categories/${categoryId}`;
+    return this.http.put(url, updatedData);
+  }
   deleteArticle(articleId: string): Observable<any> {
     const url = `${this.url2}api/article/articles/${articleId}`;
     return this.http.delete(url);
@@ -134,11 +158,7 @@ export class AppService {
     const body = {  Libelle: Libelle, description: description };
     return this.http.post<any>(this.url2 + 'api/category/categories', body);
   }
-  updateCategory(categoryId: string,updatedData: any): Observable<any> {
-    const url = `${this.url2}api/category/categories/${categoryId}`;
-
-    return this.http.put(url, updatedData);
-  }
+  
   deleteCategory(categoryId: string): Observable<any> {
     const url = `${this.url2}api/category/categories/${categoryId}`;
     return this.http.delete(url);

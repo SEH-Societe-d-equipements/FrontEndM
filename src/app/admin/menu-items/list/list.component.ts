@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';  
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table'; 
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuItem } from 'src/app/app.models';
 import { AppService } from 'src/app/app.service';
 import { environment } from 'src/environments/environment';
@@ -12,12 +14,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit { 
+   reference : any;
+   designation : any;
+   categorie : any;
+   photo : any;
   displayedColumns: string[] = ['index', 'image', 'categoryId', 'Reference', 'Designation', 'actions'];
   dataSource!: MatTableDataSource<MenuItem>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
 
-  constructor(public appService:AppService) { }
+  constructor(public appService:AppService, public router:Router,private activatedRoute: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
+    ) { }
 
   ngOnInit(): void {
     this.getCategories(); 
@@ -67,6 +75,6 @@ export class ListComponent implements OnInit {
       });
     }
   }
-  
 
-}
+ 
+    };

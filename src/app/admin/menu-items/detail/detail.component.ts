@@ -20,7 +20,7 @@ export class DetailComponent implements OnInit {
         this.getMenuItemById(params['id']); 
       } 
       else{
-        this.getMenuItemById(20); 
+        this.getMenuItemById('id'); 
       }
     }); 
   }
@@ -37,8 +37,8 @@ export class DetailComponent implements OnInit {
     } 
   } 
 
-  public getMenuItemById(id:number){ 
-    this.appService.getMenuItemById('6598b0afc5dc17885d7d9bab').subscribe(data=>{ 
+  public getMenuItemById(id:string){ 
+    this.appService.getMenuItemById(id).subscribe(data=>{ 
       this.menuItem = data;  
     }); 
   }

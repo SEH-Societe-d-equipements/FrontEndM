@@ -298,26 +298,28 @@ export class ContactComponent implements OnInit {
         });
     }
  
-    public onContactFormSubmit():void {
+    public onContactFormSubmit(): void {
         if (this.contactForm.valid) {
-            console.log(this.contactForm.value);
-            let contact = this.contactForm.value;
-            let data = {
-                Fullname: contact.name,
-                Email: contact.email,
-                Comment: contact.message
+          console.log(this.contactForm.value);
+          let contact = this.contactForm.value;
+          let data = {
+            name: contact.name,
+            email: contact.email,
+            message: contact.message,
+            phone: contact.phone,
+          };
+    
+          // Utilisez la nouvelle fonction addContact
+          this.appService.addContact(data).subscribe(response => {
+            console.log(response);
+          }, error => {
+            console.warn(error.responseText);
+            console.log({ error });
+            if (error.error) {
+              this.snackBar.open(error.error, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
             }
-            this.appService.PostMessage(data).subscribe(response => { 
-                console.log(response)
-                location.href = 'https://mailthis.to/confirm' 
-            }, error => {
-                console.warn(error.responseText)
-                console.log({ error });
-                if(error.error){
-                    this.snackBar.open(error.error, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 }); 
-                }  
-            }); 
+          });
         }
-    }
+      }
 
 }

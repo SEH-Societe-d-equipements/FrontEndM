@@ -16,14 +16,15 @@
                 [fullscreen]="true">
 </app-header-video>  
 <div class="px-3"> 
-      <div fxFlex="15" class="filter-container">
-  <mat-radio-group [(ngModel)]="selectedFilter" (ngModelChange)="applyFilter()">
-    <mat-radio-button *ngFor="let filter of typesOffilter" [value]="filter">
-      {{ filter }}
-    </mat-radio-button>
-  </mat-radio-group>
-</div>
-
+    
+<div fxFlex="15" class="filter-container" *ngIf="!showSidenavToggle">
+    <mat-radio-group [(ngModel)]="selectedFilter" (ngModelChange)="applyFilter()">
+      <mat-radio-button *ngFor="let filter of typesOffilter" [value]="filter">
+        {{ filter }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  
     
     <div class="theme-container"> 
         
