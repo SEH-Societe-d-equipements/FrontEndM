@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
 
   filteredMenuItems: MenuItem[] = [];
   
-  typesOffilter: string[] = ['Touts Designations','Pack a Pizza', 'Cuisine', 'réfrigérateur', 'gaz', 'Electrique', 'Chaud', 'froid', 'machine'];  
+  typesOffilter: string[] = ['Touts Designations','Cuisine', 'froid', 'machine','gaz', 'Electrique', 'Faconneuse', 'Sauteuse', 'Chawarma'];  
 
   selectedFilter: string = 'Touts Designations';
 

@@ -723,15 +723,19 @@ export class AppService {
 
   public getAwards(){
     return [  
-        { name: 'award-1', image: 'assets/images/awards/1.png' },
-        { name: 'award-2', image: 'assets/images/awards/2.png' },
-        { name: 'award-3', image: 'assets/images/awards/3.png' },
-        { name: 'award-4', image: 'assets/images/awards/4.png' },
-        { name: 'award-5', image: 'assets/images/awards/5.png' },
-        { name: 'award-6', image: 'assets/images/awards/6.png' },
-        { name: 'award-7', image: 'assets/images/awards/7.png' },
-        { name: 'award-8', image: 'assets/images/awards/8.png' },
-        { name: 'award-9', image: 'assets/images/awards/9.png' },
+      { name: 'award-1', image: 'assets/images/awards/1.png',link:'https://www.laspaziale.com/' },
+      { name: 'award-2', image: 'assets/images/awards/2.png',link:'https://www.famaindustrie.com/' },
+      { name: 'award-3', image: 'assets/images/awards/3.png',link:'https://www.spm.drink-systems.com/en/' },
+      { name: 'award-4', image: 'assets/images/awards/4.png',link:'https://itvice.com/wordpress/' },
+      { name: 'award-5', image: 'assets/images/awards/5.png',link:'https://www.gelmatic.com/fr/' },  
+      { name: 'award-6', image: 'assets/images/awards/6.png',link:'https://www.compakgrinders.com/' },
+      { name: 'award-7', image: 'assets/images/awards/7.png',link:'https://atalay.com.tr/EN/' },
+      { name: 'award-8', image: 'assets/images/awards/8.png',link:'http://www.unox.com' },
+      { name: 'award-9', image: 'assets/images/awards/9.png',link:'https://www.dynamicmixers.com/fr' },
+      { name: 'award-10', image: 'assets/images/awards/10.png',link:'https://www.virtusnet.de/fr/' },
+      { name: 'award-11', image: 'assets/images/awards/11.png',link:'https://www.blupura.com/fr/' },
+      { name: 'award-12', image: 'assets/images/awards/12.png',link:'https://www.lamber.it/fr/index.php' },
+      { name: 'award-13', image: 'assets/images/awards/13.png',link:'https://www.tecnoinox.it/fr' }
 
     ];
   }
