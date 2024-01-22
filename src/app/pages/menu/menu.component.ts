@@ -81,7 +81,7 @@ export class MenuComponent implements OnInit {
      // Debugging line
     console.log('Selected Filter:', this.selectedFilter);
     if (this.selectedFilter === "Touts Designations") {
-      this.getArticlesByCategory(this.selectedCategoryId);
+      this.menuItems = this.originmenuItems
     } else {
       const trimmedQuery = this.selectedFilter.trim().toLowerCase();
       this.menuItems = this.originmenuItems.filter(item =>
