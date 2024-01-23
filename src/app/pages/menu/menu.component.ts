@@ -77,6 +77,18 @@ export class MenuComponent implements OnInit {
 
 
   }
+  getUniqueDesignations(): string[] {
+    const designationsSet = new Set<string>();
+  
+    // Extract unique designations from menuItems
+    this.originmenuItems.forEach(item => {
+      designationsSet.add(item.Designation);
+    });
+  
+    // Convert the Set to an array
+    return Array.from(designationsSet);
+  }
+  
   applyFilter() {
      // Debugging line
     console.log('Selected Filter:', this.selectedFilter);
@@ -152,7 +164,9 @@ export class MenuComponent implements OnInit {
   
 
   public onChangeCategory(event:any){ 
+    
     this.selectCategory(event.value);
+    
   }
   public getArticlesByCategory(categoryId: string): void {
     const trimmedQuery = this.selectedFilter.trim().toLowerCase();
@@ -161,11 +175,16 @@ export class MenuComponent implements OnInit {
       this.originmenuItems = data;
       if (this.selectedFilter === "Touts Designations") {
         this.menuItems = data;
+        this.typesOffilter = ['Touts Designations', ...this.getUniqueDesignations()];
+
       } else {
       this.menuItems = data.filter(item =>
         
         item.Designation.toLowerCase().includes(trimmedQuery) 
+        
       );
+      this.typesOffilter = ['Touts Designations', ...this.getUniqueDesignations()];
+
       }
       this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
       this.message = null;
