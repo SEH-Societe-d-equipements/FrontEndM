@@ -1,22 +1,66 @@
 .filter-container {
-    margin-top: 235px;
-    margin-left: 50px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 500px;
+  margin-top: 235px;
+  margin-left: 50px; /* Remove fixed margin values */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content; /* Set height to fit content */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rest of the styles remain unchanged */
+
+
+.filter-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
 /* Optional: Add hover effect */
 .filter-container:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.filter-container mat-radio-group {
-    flex-direction: column;
-  }
-  
-  .filter-container mat-radio-button {
-    display: block;
-    margin-bottom: 10px;
-  }
+
+.custom-filter-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.custom-filter-container div {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.custom-filter-container div:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-filter-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative; /* Add this to position the line relative to the container */
+}
+
+.custom-filter-option {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  position: relative; /* Add this to position the line relative to the option */
+}
+
+
+.custom-filter-option.mat-radio-checked .highlight-line {
+  width: 100%; /* Set the width to 100% when the radio button is checked */
+}
