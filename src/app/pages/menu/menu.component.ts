@@ -35,14 +35,10 @@ export class MenuComponent implements OnInit {
   public message:string | null = '';
   public watcher: Subscription;
   public settings: Settings;
-
   filteredMenuItems: MenuItem[] = [];
-  
   typesOffilter: string[] = ['Touts Designations'];  
-
   selectedFilter: string = 'Touts Designations';
 
-// Existing code...
 
 
   constructor(public appSettings:AppSettings, 

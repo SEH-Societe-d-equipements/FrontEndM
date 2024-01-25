@@ -18,7 +18,7 @@
 
 <div class="px-3"> 
     <div fxFlex="15" class="filter-container" *ngIf="!showSidenavToggle">
-        <div class="filter-header">Filter Options ></div>
+        <div class="filter-header">Filter Options</div>
         <mat-radio-group [(ngModel)]="selectedFilter" (ngModelChange)="applyFilter()" class="custom-filter-container">
           <mat-radio-button *ngFor="let filter of typesOffilter" [value]="filter" class="custom-filter-option">
             {{ filter }}
