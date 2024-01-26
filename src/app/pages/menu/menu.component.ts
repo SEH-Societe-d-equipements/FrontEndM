@@ -205,9 +205,16 @@ export class MenuComponent implements OnInit {
     this.pagination = new Pagination(1, this.count, null, null, this.pagination.total, this.pagination.totalPages);
   }
 
-  public filterData(data:any){
-    return this.appService.filterData(data, this.selectedCategoryId, this.sort, this.pagination.page, this.pagination.perPage);
-  }
+  public filterData(data: any[]): { data: any[], pagination: Pagination } {
+    // Implement your filtering logic here
+    // Example: filter data based on a condition
+    let filteredData = data.filter(item => item.someCondition);
+
+    // Example: calculate pagination
+    let pagination = new Pagination(1, this.count, null, 2, filteredData.length, Math.ceil(filteredData.length / this.count));
+
+    return { data: filteredData, pagination: pagination };
+}
  
   public changeCount(count:number){
     this.count = count;   
