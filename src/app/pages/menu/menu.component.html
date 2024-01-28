@@ -85,7 +85,7 @@
                         
                         <app-menu-items-toolbar [showSidenavToggle]="showSidenavToggle"
                                                 (onSidenavToggle)="sidenav.toggle()"
-                                                > 
+                                                *ngIf="showSidenavToggle"> 
                         </app-menu-items-toolbar>
                     </div>
                     

@@ -23,7 +23,7 @@ export class MenuComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public originmenuItems: MenuItem[] = [];
   public menuItems: MenuItem[] = [];
-
+  public headerVideoSource: string = 'assets/images/others/test.mp4'
   public categories:Array<Category> = [];
   public viewType: string = 'grid';
   public viewCol: number = 25;
@@ -143,9 +143,12 @@ export class MenuComponent implements OnInit {
   
       if (this.selectedCategoryId === '0') {
         // Charger tous les articles lorsque "All Categories" est sélectionné
+        this.typesOffilter = ['Touts Designations'];
+        this.selectedFilter = 'Touts Designations';  // Set the selected filter
         this.getMenuItemsA();
       } else {
         // Charger les articles en fonction de la catégorie sélectionnée
+        this.selectedFilter = 'Touts Designations';  // Set the selected filter
         this.getArticlesByCategory(this.selectedCategoryId);
       }
       this.sidenav.close();
@@ -172,7 +175,6 @@ export class MenuComponent implements OnInit {
       if (this.selectedFilter === "Touts Designations") {
         this.menuItems = data;
         this.typesOffilter = ['Touts Designations', ...this.getUniqueDesignations()];
-
       } else {
       this.menuItems = data.filter(item =>
         
