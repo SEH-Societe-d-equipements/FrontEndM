@@ -1,20 +1,12 @@
 
-<app-header-image *ngIf="settings.header == 'image'" 
-                [backgroundImage]="'assets/images/others/menu.jpg'"
-                [bgImageAnimate]="true"
-                [contentOffsetToTop]="true"
-                [title]="'Bienvenue a SEH'"
-                [desc]="'Equipements Hôteliers et Restaurations '"
-                [fullscreen]="true">
-</app-header-image> 
-
 <app-header-video *ngIf="settings.header == 'video'" 
-[backgroundVideo]="'assets/images/others/test.mp4'" 
-[contentOffsetToTop]="true"
-                [title]="'Bienvenue a SEH'"
-                [desc]="'Equipements Hôteliers et Restaurations '"
-                [fullscreen]="true">
-</app-header-video>  
+  [backgroundVideo]="headerVideoSource" 
+  [contentOffsetToTop]="true"
+  [title]="'Bienvenue a SEH'"
+  [desc]="'Equipements Hôteliers et Restaurations '"
+  [fullscreen]="true">
+</app-header-video>
+
 
 <div class="px-3"> 
     <div fxFlex="15" class="filter-container" *ngIf="!showSidenavToggle">

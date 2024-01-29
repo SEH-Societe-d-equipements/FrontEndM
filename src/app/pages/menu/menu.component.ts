@@ -142,22 +142,29 @@ export class MenuComponent implements OnInit {
       console.log("Converted category ID to string:", this.selectedCategoryId);
   
       if (this.selectedCategoryId === '0') {
-        // Charger tous les articles lorsque "All Categories" est sélectionné
+        // Load all items when "All Categories" is selected
         this.typesOffilter = ['Touts Designations'];
-        this.selectedFilter = 'Touts Designations';  // Set the selected filter
+        this.selectedFilter = 'Touts Designations';
+        this.headerVideoSource = 'assets/images/Video.mp4'; // Set the default video source
         this.getMenuItemsA();
       } else {
-        // Charger les articles en fonction de la catégorie sélectionnée
+        // Load items based on the selected category
         this.selectedFilter = 'Touts Designations';  // Set the selected filter
+        console.log("Converted category ID to string:", this.selectedCategoryId);
+
         this.getArticlesByCategory(this.selectedCategoryId);
+        
+        if (this.selectedCategoryId === '65b16bad410573636451b7f6')
+             {this.headerVideoSource = 'assets/images/others/test.mp4';}
+        // Set video source based on the selected category (modify as needed)
+        // Example: this.headerVideoSource = 'assets/videos/' + this.selectedCategoryId + '.mp4';
       }
       this.sidenav.close();
     } else {
       console.error("Invalid category ID. Value received:", _id);
     }
   }
-  
-  
+z  
   
   
   
