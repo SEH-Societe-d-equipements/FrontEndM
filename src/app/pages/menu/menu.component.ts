@@ -87,7 +87,6 @@ export class MenuComponent implements OnInit {
   
   applyFilter() {
      // Debugging line
-    console.log('Selected Filter:', this.selectedFilter);
     if (this.selectedFilter === "Touts Designations") {
       this.menuItems = this.originmenuItems
     } else {
@@ -130,16 +129,13 @@ export class MenuComponent implements OnInit {
         ...category,
         _id: category._id.toString()  // Convertir l'ID en chaîne si c'est un nombre
       }));
-      console.log(this.categories);
     });
   }
   
   public selectCategory(_id: string): void {
-    console.log("Selected category ID:", _id);
   
     if (_id !== undefined && _id !== null) {
       this.selectedCategoryId = _id.toString();
-      console.log("Converted category ID to string:", this.selectedCategoryId);
   
       if (this.selectedCategoryId === '0') {
         // Load all items when "All Categories" is selected
@@ -150,12 +146,21 @@ export class MenuComponent implements OnInit {
       } else {
         // Load items based on the selected category
         this.selectedFilter = 'Touts Designations';  // Set the selected filter
-        console.log("Converted category ID to string:", this.selectedCategoryId);
 
         this.getArticlesByCategory(this.selectedCategoryId);
         
-        if (this.selectedCategoryId === '65b16bad410573636451b7f6')
-             {this.headerVideoSource = 'assets/images/others/test.mp4';}
+        if (this.selectedCategoryId === '65b16ba2410573636451b7f3')
+        {this.headerVideoSource = 'assets/images/GRADUS.mp4';}
+        else if (this.selectedCategoryId === '65b16bad410573636451b7f6')
+        {  this.headerVideoSource = 'assets/images/LA SPAZIALE_cappuccino.mp4';}
+        else if (this.selectedCategoryId === '65b16b51410573636451b7f1')
+        {  this.headerVideoSource = 'assets/images/others/test.mp4';}
+        else if (this.selectedCategoryId === '65b16bcb410573636451b7fb')
+        {  this.headerVideoSource = 'assets/images/Tecnoinox - Intro.mp4';}
+        else if (this.selectedCategoryId === 'test')
+        {  this.headerVideoSource = 'assets/images/others/test.mp4';}
+        else if (this.selectedCategoryId === 'test')
+        {  this.headerVideoSource = 'assets/images/others/test.mp4';}
         // Set video source based on the selected category (modify as needed)
         // Example: this.headerVideoSource = 'assets/videos/' + this.selectedCategoryId + '.mp4';
       }
@@ -201,7 +206,6 @@ z
     this.appService.getMenuItemsA().subscribe(data => {
       this.originmenuItems = data;
       this.menuItems = data;
-      console.log(data)
       this.pagination = new Pagination(1, this.count, null, 2, data.length, Math.ceil(data.length / this.count));
       this.message = null;
     });

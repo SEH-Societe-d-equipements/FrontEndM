@@ -1,4 +1,9 @@
 <mat-card class="m-2 p-0">
+    <mat-form-field class="w-100 p-2">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Search">
+      </mat-form-field>
+      
     <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">
         <div></div>
         <a mat-raised-button color="primary" routerLink="/admin/menu-items/add">

@@ -31,7 +31,14 @@
                               <input matInput formControlName="Designation" required>
                               <mat-error *ngIf="form.controls.Designation.errors?.required">Designation is required</mat-error>
                             </mat-form-field>
-                          </div>              
+                          </div>  
+                          <div fxFlex="100" fxFlex.gt-sm="50" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description" rows="10"></textarea>
+                                <mat-error *ngIf="form.controls.description.errors?.required">Description is required</mat-error>
+                            </mat-form-field>
+                        </div>                               
                         <div fxFlex="100" class="mt-2 text-center w-100">
                             <button mat-raised-button color="primary" type="submit" class="uppercase">Submit</button>
                         </div>

@@ -121,10 +121,11 @@ export class AppService {
   
  
 
-  addArticle(reference: string, designation: string, categorie: string, file: File | null): Observable<any> {
+  addArticle(reference: string, designation: string, description: string, categorie: string, file: File | null): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('Reference', reference);
     formData.append('Designation', designation);
+    formData.append('description', description);
     formData.append('Categorie', categorie);
     if (file) {
       formData.append('Photo', file, file.name);
@@ -595,29 +596,41 @@ export class AppService {
   public getTestimonials(){
     return [
         { 
-            text: 'Donec molestie turpis ut mollis efficitur. Nam fringilla libero vel dictum vulputate. In malesuada, ligula non ornare consequat, augue nibh luctus nisl, et lobortis justo ipsum nec velit. Praesent lacinia quam ut nulla gravida, at viverra libero euismod. Sed tincidunt tempus augue vitae malesuada. Vestibulum eu lectus nisi. Aliquam erat volutpat.', 
-            author: 'Mr. Adam Sandler', 
-            position: 'General Director', 
-            image: 'assets/images/profile/adam.jpg' 
+            text: '', 
+            author: 'Hotel Africa Jade', 
+            position: 'Le coin feu', 
+            image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
         },
         { 
-            text: 'Donec molestie turpis ut mollis efficitur. Nam fringilla libero vel dictum vulputate. In malesuada, ligula non ornare consequat, augue nibh luctus nisl, et lobortis justo ipsum nec velit. Praesent lacinia quam ut nulla gravida, at viverra libero euismod. Sed tincidunt tempus augue vitae malesuada. Vestibulum eu lectus nisi. Aliquam erat volutpat.', 
-            author: 'Ashley Ahlberg', 
-            position: 'Housewife', 
-            image: 'assets/images/profile/ashley.jpg' 
+            text: '', 
+            author: 'Hotel Africa Jade', 
+            position: 'Le coin feu', 
+            image: 'assets/images/profile/hotel_africa_jade1589283114.jpg' 
         },
         { 
-            text: 'Donec molestie turpis ut mollis efficitur. Nam fringilla libero vel dictum vulputate. In malesuada, ligula non ornare consequat, augue nibh luctus nisl, et lobortis justo ipsum nec velit. Praesent lacinia quam ut nulla gravida, at viverra libero euismod. Sed tincidunt tempus augue vitae malesuada. Vestibulum eu lectus nisi. Aliquam erat volutpat.', 
-            author: 'Bruno Vespa', 
-            position: 'Blogger', 
-            image: 'assets/images/profile/bruno.jpg' 
-        },
-        { 
-            text: 'Donec molestie turpis ut mollis efficitur. Nam fringilla libero vel dictum vulputate. In malesuada, ligula non ornare consequat, augue nibh luctus nisl, et lobortis justo ipsum nec velit. Praesent lacinia quam ut nulla gravida, at viverra libero euismod. Sed tincidunt tempus augue vitae malesuada. Vestibulum eu lectus nisi. Aliquam erat volutpat.', 
-            author: 'Mrs. Julia Aniston', 
-            position: 'Marketing Manager', 
-            image: 'assets/images/profile/julia.jpg' 
-        }
+          text: '', 
+          author: 'Hotel Africa Jade',
+          position: 'Le Zanzibar', 
+          image: 'assets/images/profile/1.jpg' 
+      },
+      { 
+        text: 'Le Ficus Elastica, cet arbre majestueux, trônant au centre du restaurant, attire le regard au premier coup d’œil. Du show cooking, aux spécialités asiatiques, libanaises, Italiennes', 
+        author: 'Hotel Africa Jade', 
+        position: 'Le Zanzibar', 
+        image: 'assets/images/profile/2.jpg' 
+    },
+    { 
+      text: '', 
+      author: 'Hotel Africa Jade',
+      position: 'Le Zanzibar', 
+      image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
+  },
+  { 
+    text: '', 
+    author: 'Hotel Africa Jade',
+    position: 'Le Zanzibar', 
+    image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
+  },
     ];
   }
 
@@ -641,7 +654,7 @@ export class AppService {
             ratingsCount: 4,
             ratingsValue: 400,
             image: 'assets/images/chefs/1.jpg' 
-        },        
+           },        
         { 
             id: 2,
             fullName: 'Lusia Manuel',

@@ -22,6 +22,7 @@ export class ListComponent implements OnInit {
   dataSource!: MatTableDataSource<MenuItem>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  searchTerm: string = '';
 
   constructor(public appService:AppService, public router:Router,private activatedRoute: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -38,7 +39,9 @@ export class ListComponent implements OnInit {
     const fullUrl = environment.backendUrl + "" + imageSrc;
     return fullUrl;
 }
-
+applyFilter() {
+  this.dataSource.filter = this.searchTerm.trim().toLowerCase();
+}
 
   public initDataSource(data:any){
     this.dataSource = new MatTableDataSource(data);

@@ -83,7 +83,7 @@ export class MenuItem {
       public Reference: string,
       public Designation: string,
       public Photo?: string,
-      public description?:string,
+      public Description?:string,
       public Categorie?: {
         _id: string;
         Libelle : string,

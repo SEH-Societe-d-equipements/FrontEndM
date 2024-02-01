@@ -20,14 +20,15 @@ export class AddComponent implements OnInit {
   constructor(public appService:AppService, 
               public formBuilder: UntypedFormBuilder, 
               private activatedRoute: ActivatedRoute,
-              public router:Router,
+              public router:Router, 
               @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {  
   this.form = this.formBuilder.group({ 
   "_id": [null], // Utilisez "_id" au lieu de "id"
   "Reference": [null, Validators.compose([Validators.required, Validators.minLength(4)])],
-  "Designation": [null],  
+  "Designation": [null], 
+  "description": [null], 
   "image": [null],
   "Categorie": [null, Validators.required]
 });
@@ -105,7 +106,7 @@ public onSubmit(): void {
       this.appService.updateArticle(this.id, formValues);
     } else {
       // Sinon, ajoutez un nouvel article
-      this.appService.addArticle(formValues.Reference, formValues.Designation, formValues.Categorie, fileInput).subscribe(
+      this.appService.addArticle(formValues.Reference, formValues.Designation, formValues.description, formValues.Categorie, fileInput).subscribe(
         (response: any) => {
           // Gérez la réponse du serveur ici
           console.log(response);

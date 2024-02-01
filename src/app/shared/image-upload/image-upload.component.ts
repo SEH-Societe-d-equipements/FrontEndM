@@ -9,7 +9,7 @@ import { DomHandlerService } from 'src/app/dom-handler.service';
 })
 export class ImageUploadComponent implements OnInit {
   @Input('base64') base64:string = ''; 
-  @Input('fileSize') fileSize = 500;  
+  @Input('fileSize') fileSize = 1500;  
   @Input('acceptTypes') acceptTypes:any; 
   @Output() onFileChange: EventEmitter<any> = new EventEmitter(); 
   @Output() onFileUploadClick: EventEmitter<any> = new EventEmitter();
