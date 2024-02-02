@@ -595,20 +595,32 @@ export class AppService {
 
   public getTestimonials(){
     return [
+      { 
+        text: '', 
+        author: 'Hotel Africa Jade',
+        position: 'Le Zanzibar', 
+        image: 'assets/images/profile/3.jpg' 
+    },
+    { 
+      text: '', 
+      author: 'Hotel Africa Jade',
+      position: 'Le Zanzibar', 
+      image: 'assets/images/profile/4.jpg' 
+    },
         { 
-            text: '', 
+            text: 'restaurant française et maghrébine dans un cadre raffiné et convivial.', 
             author: 'Hotel Africa Jade', 
             position: 'Le coin feu', 
             image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
         },
         { 
-            text: '', 
+            text: 'Dans une atmosphère chaleureuse, un feu de cheminée accompagnera  vos tête-à-tête romantiques, vos repas en familles ou entre amis, tout en musique.', 
             author: 'Hotel Africa Jade', 
             position: 'Le coin feu', 
             image: 'assets/images/profile/hotel_africa_jade1589283114.jpg' 
         },
         { 
-          text: '', 
+          text: 'Le bar principal situé à la réception de l’hôtel vous accueille tous les jours, toute l’année.', 
           author: 'Hotel Africa Jade',
           position: 'Le Zanzibar', 
           image: 'assets/images/profile/1.jpg' 
@@ -618,19 +630,8 @@ export class AppService {
         author: 'Hotel Africa Jade', 
         position: 'Le Zanzibar', 
         image: 'assets/images/profile/2.jpg' 
-    },
-    { 
-      text: '', 
-      author: 'Hotel Africa Jade',
-      position: 'Le Zanzibar', 
-      image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
-  },
-  { 
-    text: '', 
-    author: 'Hotel Africa Jade',
-    position: 'Le Zanzibar', 
-    image: 'assets/images/profile/hotel_africa_jade1589282527.jpg' 
-  },
+    }
+
     ];
   }
 

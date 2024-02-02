@@ -78,12 +78,15 @@ export class MenuComponent implements OnInit {
   
     // Extract unique designations from menuItems
     this.originmenuItems.forEach(item => {
-      designationsSet.add(item.Designation);
+      // Trim spaces and convert to lowercase (or uppercase, choose one)
+      const trimmedDesignation = item.Designation.trim().toLowerCase();
+      designationsSet.add(trimmedDesignation);
     });
   
     // Convert the Set to an array
     return Array.from(designationsSet);
   }
+  
   
   applyFilter() {
      // Debugging line
