@@ -45,22 +45,15 @@ import { DirectivesModule } from '../theme/directives/directives.module';
 
 import { LogoComponent } from './logo/logo.component';
 import { HeaderImageComponent } from './header-image/header-image.component';
-import { HeaderCarouselComponent } from './header-carousel/header-carousel.component';
-import { OurServicesComponent } from './our-services/our-services.component';
 import { OurAwardsComponent } from './our-awards/our-awards.component';
 import { GetInTouchComponent } from './get-in-touch/get-in-touch.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MenuItemsCarouselComponent } from './menu-items-carousel/menu-items-carousel.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
-import { QuantityCounterComponent } from './quantity-counter/quantity-counter.component';
-import { RatingComponent } from './rating/rating.component';
-import { CommentsComponent } from './comments/comments.component';
 import { MenuItemsToolbarComponent } from './menu-items-toolbar/menu-items-toolbar.component';
 import { MenuItemHoverableComponent } from './menu-item-hoverable/menu-item-hoverable.component';
-import { OurChefsComponent } from './our-chefs/our-chefs.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
-import { GetAppComponent } from './get-app/get-app.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { ReservationDialogComponent } from './reservation-dialog/reservation-dialog.component'; 
 import { DialogHeaderControlsComponent } from './dialog-header-controls/dialog-header-controls.component'; 
@@ -68,7 +61,6 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component'; 
 import { SocialIconsComponent } from './social-icons/social-icons.component';
-import { TodayMenuComponent } from './today-menu/today-menu.component';
 import { LangComponent } from './lang/lang.component';
 import { OrderDetailsDialogComponent } from './order-details-dialog/order-details-dialog.component';
 import { HeaderVideoComponent } from './header-video/header-video.component';
@@ -77,22 +69,15 @@ import { HeaderVideoComponent } from './header-video/header-video.component';
   declarations: [
     LogoComponent,
     HeaderImageComponent,
-    HeaderCarouselComponent,
-    OurServicesComponent,
     OurAwardsComponent,
     GetInTouchComponent,
     MenuItemComponent,
     MenuItemsCarouselComponent,
     CartOverviewComponent,
-    QuantityCounterComponent,
-    RatingComponent,
-    CommentsComponent,
     MenuItemsToolbarComponent,
     MenuItemHoverableComponent,
-    OurChefsComponent,
     TimelineComponent,
     TestimonialsComponent,
-    GetAppComponent,
     ReservationFormComponent,
     ReservationDialogComponent,
     DialogHeaderControlsComponent,
@@ -100,7 +85,6 @@ import { HeaderVideoComponent } from './header-video/header-video.component';
     ConfirmDialogComponent,
     AlertDialogComponent,
     SocialIconsComponent,
-    TodayMenuComponent,
     LangComponent,
     OrderDetailsDialogComponent,
     HeaderVideoComponent
@@ -195,21 +179,14 @@ import { HeaderVideoComponent } from './header-video/header-video.component';
     DirectivesModule,
     LogoComponent,
     HeaderImageComponent,
-    HeaderCarouselComponent,
-    OurServicesComponent,
     OurAwardsComponent,
     GetInTouchComponent,
     MenuItemComponent,
     MenuItemsCarouselComponent,
-    QuantityCounterComponent,
-    RatingComponent,
-    CommentsComponent,
     MenuItemsToolbarComponent,
     MenuItemHoverableComponent,
-    OurChefsComponent,
     TimelineComponent,
     TestimonialsComponent,
-    GetAppComponent,
     ReservationFormComponent,
     ReservationDialogComponent,
     DialogHeaderControlsComponent,
@@ -217,7 +194,6 @@ import { HeaderVideoComponent } from './header-video/header-video.component';
     ConfirmDialogComponent,
     AlertDialogComponent,
     SocialIconsComponent,
-    TodayMenuComponent,
     LangComponent,
     OrderDetailsDialogComponent,
     HeaderVideoComponent
