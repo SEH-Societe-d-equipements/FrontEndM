@@ -278,7 +278,6 @@ header{
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            background-image: url('../../../assets/images/others/top-bg.jpg'); 
             color: #fff; 
             .mat-toolbar-row:first-child{
                 position: relative;
@@ -828,11 +827,7 @@ button.swipe-arrow{
             background-image: url('../../../assets/images/others/testimonials.jpg');
         }
     } 
-    &.chefs{
-        &:before{ 
-           background-image: url('../../../assets/images/chefs/chefs.jpg');
-        }
-    } 
+   
     &.default{
         &:before{ 
             background-image: url('../../../assets/images/others/default-bg.png');

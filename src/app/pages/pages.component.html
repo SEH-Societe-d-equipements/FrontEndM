@@ -29,9 +29,7 @@
 
         <app-footer></app-footer>
        
-        <div fxLayout="row" fxLayoutAlign="center center" class="options-icon" (click)="options.toggle()">
-            <mat-icon>settings</mat-icon>
-        </div>
+      
         
         <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top" (click)="scrollToTop()">
             <mat-icon>arrow_upward</mat-icon>
@@ -46,41 +44,7 @@
                 <mat-icon>close</mat-icon>
             </button>
         </div> 
-        <ng-scrollbar pointerEventsMethod="scrollbar">
-     
-            <div fxLayout="column" class="control">
-                <h4>Layout</h4>
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <span>Sticky Menu Toolbar</span>
-                    <mat-slide-toggle [checked]="settings.stickyMenuToolbar" (change)="settings.stickyMenuToolbar = !settings.stickyMenuToolbar" labelPosition="before"></mat-slide-toggle>
-                </div>                 
-                <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <span>RTL</span>
-                    <mat-slide-toggle [checked]="settings.rtl" (change)="settings.rtl = !settings.rtl" labelPosition="before"></mat-slide-toggle>
-                </div> 
-            </div>
-            
-            <div fxLayout="column" class="control">
-                <h4>Choose header type</h4>
-                <mat-radio-group [(ngModel)]="headerTypeOption" (change)="chooseHeaderType()">
-                    <mat-radio-button *ngFor="let headerType of headerTypes" [value]="headerType">{{headerType}}</mat-radio-button>
-                </mat-radio-group>
-            </div>
-
-            <div fxLayout="column" class="control">
-                <h4>Choose theme skin</h4> 
-                <div fxLayout="row" fxLayoutAlign="space-between center"> 
-                    <div class="skin-primary red" (click)="changeTheme('red')"></div>
-                    <div class="skin-primary blue" (click)="changeTheme('blue')"></div>  
-                    <div class="skin-primary green" (click)="changeTheme('green')"></div>  
-                    <div class="skin-primary pink" (click)="changeTheme('pink')"></div> 
-                    <div class="skin-primary purple" (click)="changeTheme('purple')"></div>
-                    <div class="skin-primary grey" (click)="changeTheme('grey')"></div>
-                    <div class="skin-primary orange-dark" (click)="changeTheme('orange-dark')"><div class="skin-secondary"></div></div>
-                </div>
-            </div> 
-   
-        </ng-scrollbar>
+        
     </mat-sidenav>
     
 </mat-sidenav-container> 

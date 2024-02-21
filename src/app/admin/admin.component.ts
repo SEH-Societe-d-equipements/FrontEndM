@@ -12,7 +12,7 @@ import { DomHandlerService } from '../dom-handler.service';
 })
 export class AdminComponent implements OnInit {
   @ViewChild('sidenav') sidenav:any;  
-  public userImage = 'assets/images/others/admin.jpg'; 
+  public userImage = 'assets/images/others/login.png'; 
   public settings:Settings;
   public menuItems:Array<Menu> = [];
   public toggleSearchBar:boolean = false;

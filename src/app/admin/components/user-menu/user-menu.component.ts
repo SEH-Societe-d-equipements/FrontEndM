@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent implements OnInit {
-  public userImage = 'assets/images/others/admin.jpg';
+  public userImage = 'assets/images/others/login.png';
   constructor() { }
 
   ngOnInit(): void {

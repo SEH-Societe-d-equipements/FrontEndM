@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http'; 
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import { DatePipe } from '@angular/common';
 
 import { NgProgressModule } from 'ngx-progressbar';
@@ -37,7 +37,6 @@ import { ContactsComponent } from './theme/components/contacts/contacts.componen
 import { HorizontalMenuComponent } from './theme/components/menu/horizontal-menu/horizontal-menu.component';
 import { VerticalMenuComponent } from './theme/components/menu/vertical-menu/vertical-menu.component';
 import { FooterComponent } from './theme/components/footer/footer.component'; 
-import { LockScreenComponent } from './pages/lock-screen/lock-screen.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,7 @@ import { LockScreenComponent } from './pages/lock-screen/lock-screen.component';
     HorizontalMenuComponent,
     VerticalMenuComponent,
     FooterComponent,
-    LockScreenComponent
+    
   ],
   imports: [
     BrowserModule,

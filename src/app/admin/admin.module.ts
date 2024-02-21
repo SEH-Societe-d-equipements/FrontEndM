@@ -6,7 +6,6 @@ import { AdminComponent } from './admin.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { FullScreenComponent } from './components/fullscreen/fullscreen.component'; 
-import { MessagesComponent } from './components/messages/messages.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component'; 
 
 
@@ -19,8 +18,6 @@ export const routes = [
     component: AdminComponent, children: [
       { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }, 
       { path: 'menu-items', loadChildren: () => import('./menu-items/menu-items.module').then(m => m.MenuItemsModule) },
-      { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), data: { breadcrumb: 'Users' } },
-      { path: 'analytics', loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule), data: { breadcrumb: 'Analytics' } },
     ]
   } 
 ];
@@ -32,7 +29,6 @@ export const routes = [
     MenuComponent,
     UserMenuComponent,
     FullScreenComponent,
-    MessagesComponent,
     BreadcrumbComponent 
   ],
   imports: [

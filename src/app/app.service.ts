@@ -174,9 +174,6 @@ export class AppService {
   } 
   
 
-  public getBestMenuItems(): Observable<MenuItem[]>{
-    return this.http.get<MenuItem[]>(this.url + 'best-menu-items.json');
-  } 
 
   public getCategories(): Observable<Category[]> {
     return this.http.get<{categories: Category[] }>(`${this.url2}api/category/categories`)
@@ -185,9 +182,7 @@ export class AppService {
   
  
 
-  public getHomeCarouselSlides(){
-    return this.http.get<any[]>(this.url + 'slides.json');
-  }
+  
 
   public getReservations(){
     return this.http.get<any[]>(this.url + 'reservations.json');

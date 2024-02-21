@@ -31,9 +31,7 @@
     "MENU_ITEMS": "Éléments du Produit", 
     "CATEGORIES": "Catégories",
     "MENU_ITEMS_LIST": "Liste de Produit", 
-    "ADD_MENU_ITEM": "Ajouter un Produit",
-    "ANALYTICS": "Analytique"
-   
+    "ADD_MENU_ITEM": "Ajouter un Produit"   
   },
   "BTN": {
     "ADD": "Ajouter",
