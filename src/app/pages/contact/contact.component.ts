@@ -300,7 +300,6 @@ export class ContactComponent implements OnInit {
  
     public onContactFormSubmit(): void {
         if (this.contactForm.valid) {
-          console.log(this.contactForm.value);
           let contact = this.contactForm.value;
           let data = {
             name: contact.name,

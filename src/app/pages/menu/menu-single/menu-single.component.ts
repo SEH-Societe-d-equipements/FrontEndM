@@ -32,7 +32,6 @@ export class MenuSingleComponent implements OnInit {
       const menuItemId = params['id'];
       this.appService.getMenuItemById(menuItemId).subscribe(data => {
         this.menuItem = data;
-        console.log('menuItem:', this.menuItem);
       });
     });
   }

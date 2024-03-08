@@ -23,13 +23,11 @@ export const horizontalMenuItems = [
 export const verticalMenuItems = [ 
     new Menu (1, 'NAV.HOME', '/', null, null, false, 0),
     new Menu (2, 'MENU', '/menu', null, null, false, 0), 
-    new Menu (10, 'NAV.PAGES', null, null, null, true, 0),
     new Menu (11, 'RESERVATION', '/reservation', null, null, false, 10), 
     new Menu (20, 'ACCOUNT', null, null, null, true, 10), 
     new Menu (21, 'LOGIN', '/login', null, null, false, 20), 
     new Menu (41, 'NAV.SINGLE_MENU', '/menu/17', null, null, false, 40), 
     new Menu (70, 'NAV.CONTACT', '/contact', null, null, false, 0),  
     new Menu (80, 'NAV.ABOUT_US', '/about', null, null, false, 0),  
-    new Menu (90, 'NAV.ADMIN', '/admin', null, null, false, 0),     
  
 ]

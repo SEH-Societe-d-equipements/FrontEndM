@@ -23,7 +23,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {     
     this.userRole = this.appService.getUserRole();
-    console.log('User Role:', this.userRole);  // Ajoutez cette ligne
     this.menuItems = this.getMenuItemsByRole(this.userRole);
     this.parentMenu = this.menuItems.filter((item) => item.parentId == this.menuParentId);
   }
@@ -52,6 +51,7 @@ export class MenuComponent implements OnInit {
        
       ];
     }
+    
     return [];
   }
 

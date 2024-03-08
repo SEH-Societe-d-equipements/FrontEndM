@@ -60,13 +60,29 @@ export class AppService {
 
 
 
-  
-  public loggedInUser: User | null = null;
-  public url = environment.url + '/assets/data/'; 
-  public url2 = environment.backendUrl ;
-  private userRole: string = 'admin';  // Assignez la valeur par défaut ou obtenez-la après la connexion
+  private _isAuthenticated: boolean = false;
+  private _redirectUrl: string | null = null; // Define redirectUrl property
 
-  
+public loggedInUser: User | null = null;
+public url = environment.url + '/assets/data/'; 
+public url2 = environment.backendUrl ;
+private userRole: string = 'admin';  // Assignez la valeur par défaut ou obtenez-la après la connexion
+
+setAuthenticated(status: boolean): void {
+  this._isAuthenticated = status;
+}
+
+isAuthenticated(): boolean {
+  return this._isAuthenticated;
+}
+
+get redirectUrl(): string | null {
+  return this._redirectUrl;
+}
+
+set redirectUrl(url: string | null) {
+  this._redirectUrl = url;
+}
   constructor(public http:HttpClient, 
               private datePipe:DatePipe,
               private bottomSheet: MatBottomSheet, 

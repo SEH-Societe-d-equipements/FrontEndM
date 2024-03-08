@@ -3,11 +3,9 @@
   "LOGOUT": "Se déconnecter",
   "REGISTER": "S'inscrire", 
   "ACCOUNT": "Compte",
-  "RESERVATION": "Rendez-vous",
   "MENU": "Les Produits",
   "NAV": {  
     "HOME": "Accueil",  
-    "PAGES": "Des pages", 
     "CHEFS": "les marques",
     "CHEF": "marque", 
     "SHOP": "Boutique",

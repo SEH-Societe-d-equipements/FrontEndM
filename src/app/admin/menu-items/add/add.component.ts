@@ -54,7 +54,6 @@ export class AddComponent implements OnInit {
     if(!this.appService.categories.length){
       this.appService.getCategories().subscribe(categories=>{ 
         this.appService.categories = categories;
-        console.log(categories)
       });
     } 
   } 

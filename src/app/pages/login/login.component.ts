@@ -36,9 +36,15 @@ export class LoginComponent implements OnInit {
       this.appService.login(username, password).subscribe(
         (response) => {
           if (response.success) {
-            console.log('User Role from Server:', response.user.role);
-            this.appService.setUserRole(response.user.role);
-            this.router.navigate(['/admin']);
+            if (response.user.role === 'admin') {
+              // Return menu items for admin role
+              this.appService.setUserRole(response.user.role);
+              this.router.navigate(['/admin']);
+            } else if (response.user.role === 'commerciale') {   
+              this.appService.setUserRole(response.user.role);
+            this.router.navigate(['/admin/menu-items/categories']);
+            }
+            
           } else {
             console.error(response.error_message);
           }

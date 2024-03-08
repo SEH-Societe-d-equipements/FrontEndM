@@ -1,13 +1,16 @@
-<mat-card class="menu-item p-0" [fxLayout]="(viewType == 'grid') ? 'column' : 'row'" [ngClass]="[viewType + '-item', 'column-'+column]">   
+<mat-card [routerLink]="['/menu', menuItem._id]" class="menu-item p-0" [fxLayout]="(viewType == 'grid') ? 'column' : 'row'" [ngClass]="[viewType + '-item', 'column-'+column]"> 
+    
+
     <div fxFlex="100" [fxShrink]="(viewType == 'grid') ? '3' : '2'" class="thumbnail-section">
         
         
         <img *ngIf="menuItem.Photo" [src]="getFullImageUrl(menuItem.Photo)"class="w-100 d-block">  
     </div>  
+    <a [routerLink]="['/menu', menuItem._id]"> 
     <div fxFlex="100" class="p-3"> 
         <div fxLayout="column" fxLayoutAlign="start stretch" class="h-100">
             <mat-card-content class="mb-0 p-0">
-                <h1 class="title"><a [routerLink]="['/menu', menuItem._id]">{{menuItem.Reference}}</a></h1>   
+                <h1 class="title">{{menuItem.Reference}}</h1>   
                 <div class="mt-2"> 
                     <p>{{menuItem.Designation}}</p> 
                 </div>  
@@ -30,4 +33,5 @@
             </div> 
         </div>   
     </div>  
+</a> 
 </mat-card>

@@ -100,6 +100,8 @@ export class MenuComponent implements OnInit {
       );
     }
     this.resetPagination();
+    window.scrollTo({ top: 900, behavior: 'smooth' });
+
   }
   applySearchFilter(): void {
     const trimmedQuery = this.searchQuery.trim().toLowerCase();
