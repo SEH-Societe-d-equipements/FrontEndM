@@ -1,48 +1,44 @@
-<app-header-video *ngIf="settings.header == 'video'" 
-                [backgroundVideo]="'assets/images/Video.mp4'" 
-                [contentOffsetToTop]="true"
-                [fullscreen]="true">
+<app-header-video *ngIf="settings.header == 'video'"
+                  [backgroundVideo]="'assets/images/Video.mp4'"
+                  [contentOffsetToTop]="true"
+                  [fullscreen]="true">
 </app-header-video>
-  
 
-
-<div class="section mt-3"> 
+<div class="section mt-3">
     <div class="px-3">
         <div class="theme-container">
-            <h1 class="section-title">À propos de nous</h1> 
-            <p class="section-desc text-muted">SEH-Société d'équipements Hôteliers et Restaurations. </p>
-            <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+            <h1 class="section-title">À propos de nous</h1>
+            <p class="section-desc text-muted">SEH-Société d'équipements Hôteliers et Restaurations.</p>
+            <mat-card class="p-0 o-hidden" fxLayout="row wrap">
                 <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="50" style="overflow: hidden; height: 50%;">
-                    <img src="assets/images/others/about-us.jpg" alt="about" class="mw-100 d-block">
+                    <img src="assets/images/others/about-us.jpg" alt="À propos de nous" class="mw-100 d-block">
                 </div>
-                
+
                 <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.sm="50" class="py-3 px-4">
                     <h1 class="secondary-font primary-color mb-2">Bienvenue chez SEH</h1>
                     <p> Nous sommes fiers de servir l'industrie en offrant des équipements de qualité, une satisfaction clientèle exceptionnelle et une quête incessante de l'excellence.</p>
-                    <p> la qualité sans compromis est essentiel. Notre engagement envers l'excellence se reflète dans chaque produit que nous offrons. Des processus rigoureux d'assurance qualité, une technologie de pointe et une équipe d'experts garantissent que nos équipements répondent, voire dépassent, les normes de l'industrie.</p>
+                    <p> La qualité sans compromis est essentielle. Notre engagement envers l'excellence se reflète dans chaque produit que nous offrons. Des processus rigoureux d'assurance qualité, une technologie de pointe et une équipe d'experts garantissent que nos équipements répondent, voire dépassent, les normes de l'industrie.</p>
                     <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="pt-3">
                         <a mat-raised-button routerLink="/about" color="primary" class="uppercase">Plus</a>
-                    </div> 
-                </div>  
+                    </div>
+                </div>
             </mat-card>
         </div>
-    </div>   
+    </div>
 </div>
 
 <div class="section default mt-3">
     <div class="px-3">
         <div class="theme-container" *ngIf="specialMenuItems">
-            <h1 class="section-title">équipements Hôteliers et Restaurations</h1>
-            <p class="section-desc text-muted">Découvrez nos produits.</p> 
+            <h1 class="section-title">Équipements Hôteliers et Restaurations</h1>
+            <p class="section-desc text-muted">Découvrez nos produits.</p>
             <app-menu-items-carousel [menuItems]="specialMenuItems"></app-menu-items-carousel>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <a mat-raised-button routerLink="/menu" color="primary" class="uppercase">View all menu</a>
-            </div>  
-        </div>        
-    </div>   
-</div> 
+            </div>
+        </div>
+    </div>
+</div>
 
- 
-<app-testimonials></app-testimonials>  
-<app-our-awards></app-our-awards> 
-
+<app-testimonials></app-testimonials>
+<app-our-awards></app-our-awards>

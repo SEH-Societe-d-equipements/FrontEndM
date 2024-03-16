@@ -656,7 +656,7 @@ set redirectUrl(url: string | null) {
       { name: 'award-5', image: 'assets/images/awards/5.png',link:'https://www.gelmatic.com/fr/' },  
       { name: 'award-6', image: 'assets/images/awards/6.png',link:'https://www.compakgrinders.com/' },
       { name: 'award-7', image: 'assets/images/awards/7.png',link:'https://atalay.com.tr/EN/' },
-      { name: 'award-8', image: 'assets/images/awards/8.png',link:'http://www.unox.com' },
+      { name: 'award-8', image: 'assets/images/awards/8.png',link:'https://www.unox.com' },
       { name: 'award-9', image: 'assets/images/awards/9.png',link:'https://www.dynamicmixers.com/fr' },
       { name: 'award-10', image: 'assets/images/awards/10.png',link:'https://www.virtusnet.de/fr/' },
       { name: 'award-11', image: 'assets/images/awards/11.png',link:'https://www.blupura.com/fr/' },

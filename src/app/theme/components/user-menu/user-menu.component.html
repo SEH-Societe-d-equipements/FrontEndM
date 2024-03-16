@@ -1,11 +1,10 @@
-<a mat-button [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger">
+<a mat-button [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger" href="/destination-url">
     <mat-icon class="mat-icon-sm m-0">person</mat-icon>
     <span fxShow="false" fxShow.gt-sm class="mx-1 uppercase">{{ 'ACCOUNT' | translate }}</span> 
     <mat-icon class="mat-icon-sm caret" iconPositionEnd>arrow_drop_down</mat-icon>
 </a>
 <mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-menu-panel user-menu">
     <span (mouseleave)="userMenuTrigger.closeMenu()">
-       
         <div class="divider"></div>
         <div class="divider"></div>
         <a mat-menu-item routerLink="/login"> 
@@ -13,4 +12,4 @@
             <span>Sign In</span> 
         </a>
     </span>
-</mat-menu>  
+</mat-menu>

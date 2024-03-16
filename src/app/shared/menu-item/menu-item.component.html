@@ -4,7 +4,7 @@
     <div fxFlex="100" [fxShrink]="(viewType == 'grid') ? '3' : '2'" class="thumbnail-section">
         
         
-        <img *ngIf="menuItem.Photo" [src]="getFullImageUrl(menuItem.Photo)"class="w-100 d-block">  
+        <img *ngIf="menuItem.Photo" [src]="getFullImageUrl(menuItem.Photo)"class="w-100 d-block"alt="eqipements">  
     </div>  
     <a [routerLink]="['/menu', menuItem._id]"> 
     <div fxFlex="100" class="p-3"> 

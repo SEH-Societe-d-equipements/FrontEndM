@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" [style.minHeight.px]="132">
     <div *ngFor="let file of files" class="w-100"> 
-        <img [src]="file.content" alt="image" class="d-block w-100 mat-elevation-z2">
+        <img [src]="file.content" alt="equipement" class="d-block w-100 mat-elevation-z2">
     </div> 
     <img *ngIf="!files.length" src="assets/images/others/noimage.png" class="d-block w-100 mat-elevation-z2">
 </div>
